@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { TREATMENT_CATEGORIES } from "@/lib/constants";
 
 export default function TreatmentsPage() {
@@ -35,6 +36,22 @@ export default function TreatmentsPage() {
             </ul>
           </article>
         ))}
+      </section>
+
+      <section className="mt-10 rounded-2xl border border-trust-green/20 bg-gradient-to-br from-trust-green/[0.07] to-white p-6 text-center shadow-soft md:mt-14 md:p-10">
+        <h2 className="text-lg font-semibold text-trust-green md:text-xl">
+          Ready to explore your options?
+        </h2>
+        <p className="mx-auto mt-2 max-w-lg text-sm text-slate-gray md:text-base">
+          Tell us what you are considering—we will respond with a clear, no-pressure
+          next step.
+        </p>
+        <Link
+          href="/#consultation"
+          className="mt-5 inline-flex items-center justify-center rounded-full bg-medical-teal px-8 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50 md:text-base"
+        >
+          Inquire now
+        </Link>
       </section>
     </main>
   );

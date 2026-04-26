@@ -27,22 +27,22 @@ const FEATURED = [
 const VALUE_PILLARS = [
   {
     title: "Single-point coordination",
-    body: "One dedicated team carries your case from first application through travel, hospital stays, and post-treatment follow-up—so you are never bounced between silos or conflicting contacts.",
+    body: "One team from intake through follow-up—no silos.",
     icon: Waypoints
   },
   {
     title: "24/7 US-English support in Türkiye",
-    body: "Throughout your stay, you have access to native US-English speaking guides and consultants who understand American expectations around clarity, documentation, and bedside communication.",
+    body: "US-English guides on call around the clock while you are here.",
     icon: Headphones
   },
   {
     title: "Patient safety & transparency",
-    body: "We work within strict ethical standards: clear timelines, realistic expectations, and honest conversations about risks and alternatives—because trust is built in the details, not in slogans.",
+    body: "Honest timelines, clear risks, ethical standards.",
     icon: Eye
   },
   {
     title: "Authorized hospital network",
-    body: "We coordinate with vetted, authorized facilities and specialist pathways aligned to your clinical needs—never opaque referrals or unverified operators.",
+    body: "Vetted facilities only—no mystery referrals.",
     icon: Building2
   }
 ] as const;

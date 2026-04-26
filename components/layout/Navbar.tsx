@@ -21,41 +21,32 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-clean-white/80 backdrop-blur-md">
       <div className="mx-auto flex min-h-[4.25rem] w-full max-w-7xl items-center justify-between gap-3 px-4 py-2 md:min-h-[5rem] md:px-8 md:py-2.5 lg:px-12">
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <div className="flex flex-col items-center gap-1">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
-              Home
-            </span>
-            <Link
-              href="/"
-              aria-label="Go to home page"
-              className={cn(
-                "inline-flex h-9 w-9 items-center justify-center rounded-lg border text-trust-green shadow-sm transition-all sm:h-10 sm:w-10",
-                isHome
-                  ? "border-trust-green bg-trust-green/10"
-                  : "border-slate-200 bg-white hover:border-trust-green/40 hover:bg-trust-green/5"
-              )}
-            >
-              <House size={18} strokeWidth={2.2} aria-hidden />
-            </Link>
-          </div>
+        <Link
+          href="/"
+          className="flex shrink-0 items-center transition-opacity hover:opacity-90"
+          aria-label="USMD home"
+        >
+          <Image
+            src="/usmd-logo.png"
+            alt="USMD logo"
+            width={280}
+            height={88}
+            priority
+            className="h-12 w-auto sm:h-14 md:h-16 lg:h-[4.5rem]"
+          />
+        </Link>
+
+        <nav className="hidden items-center gap-6 lg:gap-8 md:flex">
           <Link
             href="/"
-            className="flex items-center transition-opacity hover:opacity-90"
-            aria-label="USMD home"
+            className={cn(
+              "inline-flex items-center gap-1.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50",
+              isHome ? "text-trust-green" : "text-slate-gray hover:text-trust-green"
+            )}
           >
-            <Image
-              src="/usmd-logo.png"
-              alt="USMD logo"
-              width={280}
-              height={88}
-              priority
-              className="h-12 w-auto sm:h-14 md:h-16 lg:h-[4.5rem]"
-            />
+            <House size={16} strokeWidth={2.25} className="shrink-0" aria-hidden />
+            Home
           </Link>
-        </div>
-
-        <nav className="hidden items-center gap-8 md:flex">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}

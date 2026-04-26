@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { HeartPulse, Scissors, Smile, Weight } from "lucide-react";
 
 const TREATMENTS = [
@@ -27,7 +27,9 @@ const TREATMENTS = [
   }
 ] as const;
 
-const reveal = {
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const reveal: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0 }
 };
@@ -42,7 +44,7 @@ export function TreatmentsPreview() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, ease: EASE }}
         variants={reveal}
         className="mb-8 md:mb-10"
       >
@@ -68,7 +70,7 @@ export function TreatmentsPreview() {
               transition={{
                 duration: 0.5,
                 delay: index * 0.07,
-                ease: [0.22, 1, 0.36, 1]
+                ease: EASE
               }}
               variants={reveal}
               className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-medical-teal/30"

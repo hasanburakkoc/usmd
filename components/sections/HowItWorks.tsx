@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Plane, ShieldCheck, Stethoscope, Video } from "lucide-react";
 
 const STEPS = [
@@ -27,7 +27,9 @@ const STEPS = [
   }
 ] as const;
 
-const reveal = {
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const reveal: Variants = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0 }
 };
@@ -42,7 +44,7 @@ export function HowItWorks() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.6, ease: EASE }}
         variants={reveal}
         className="mb-8 md:mb-10"
       >
@@ -72,7 +74,7 @@ export function HowItWorks() {
               transition={{
                 duration: 0.55,
                 delay: index * 0.08,
-                ease: [0.22, 1, 0.36, 1]
+                ease: EASE
               }}
               variants={reveal}
               className="relative rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-blue/25 md:p-6"

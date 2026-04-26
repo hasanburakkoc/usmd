@@ -20,7 +20,7 @@ export function Navbar() {
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 md:px-8 lg:px-12">
         <Link
           href="/"
-          className="text-2xl font-bold text-trust-blue transition-opacity hover:opacity-90"
+          className="text-2xl font-bold text-trust-green transition-opacity hover:opacity-90"
         >
           USMD
         </Link>
@@ -30,7 +30,7 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-slate-gray transition-colors hover:text-trust-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
+              className="text-sm font-medium text-slate-gray transition-colors hover:text-trust-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
             >
               {item.label}
             </Link>
@@ -39,7 +39,7 @@ export function Navbar() {
             href="#consultation"
             className="rounded-full bg-medical-teal px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
           >
-            Free Consultation
+            Inquire Now
           </Link>
         </nav>
 
@@ -68,7 +68,7 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="rounded-md px-2 py-2 text-sm font-medium text-slate-gray transition-colors hover:bg-slate-100 hover:text-trust-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
+              className="rounded-md px-2 py-2 text-sm font-medium text-slate-gray transition-colors hover:bg-slate-100 hover:text-trust-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
             >
               {item.label}
             </Link>
@@ -78,7 +78,7 @@ export function Navbar() {
             onClick={() => setIsOpen(false)}
             className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-medical-teal px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
           >
-            Free Consultation
+            Inquire Now
           </Link>
         </nav>
       </div>

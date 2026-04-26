@@ -48,7 +48,7 @@ export function HowItWorks() {
         variants={reveal}
         className="mb-8 md:mb-10"
       >
-        <h2 className="text-2xl font-bold tracking-tight text-trust-blue md:text-4xl">
+        <h2 className="text-2xl font-bold tracking-tight text-trust-green md:text-4xl">
           How It Works
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-gray md:text-base">
@@ -77,14 +77,14 @@ export function HowItWorks() {
                 ease: EASE
               }}
               variants={reveal}
-              className="relative rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-blue/25 md:p-6"
+              className="relative rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-green/25 md:p-6"
             >
               <div className="flex items-start gap-4">
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-medical-teal text-sm font-semibold text-white">
                   {stepNumber}
                 </span>
                 <div className="flex-1">
-                  <div className="inline-flex rounded-xl bg-trust-blue/10 p-2 text-trust-blue">
+                  <div className="inline-flex rounded-xl bg-trust-green/10 p-2 text-trust-green">
                     <Icon size={20} aria-hidden="true" />
                   </div>
                   <h3 className="mt-3 text-base font-semibold text-slate-gray md:text-lg">

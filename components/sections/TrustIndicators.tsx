@@ -29,9 +29,9 @@ export function TrustIndicators() {
           return (
             <article
               key={item.title}
-              className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-blue/25"
+              className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-green/25"
             >
-              <div className="inline-flex rounded-xl bg-trust-blue/10 p-3 text-trust-blue transition-colors group-hover:bg-trust-blue/15">
+              <div className="inline-flex rounded-xl bg-trust-green/10 p-3 text-trust-green transition-colors group-hover:bg-trust-green/15">
                 <Icon size={22} aria-hidden="true" />
               </div>
               <h3 className="mt-4 text-base font-semibold text-slate-gray">

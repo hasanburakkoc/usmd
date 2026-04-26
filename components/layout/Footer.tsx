@@ -8,10 +8,10 @@ const QUICK_LINKS = [
 ] as const;
 
 const TREATMENT_LINKS = [
-  { label: "Hair Transplant", href: "#services" },
-  { label: "Dental Aesthetics", href: "#services" },
-  { label: "Weight Loss Surgery", href: "#services" },
-  { label: "Plastic Surgery", href: "#services" }
+  { label: "Hair Transplant", href: "/treatments" },
+  { label: "Dental Aesthetics", href: "/treatments" },
+  { label: "Weight Loss Surgery", href: "/treatments" },
+  { label: "Plastic Surgery", href: "/treatments" }
 ] as const;
 
 const year = new Date().getFullYear();

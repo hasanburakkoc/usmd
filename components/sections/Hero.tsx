@@ -26,7 +26,7 @@ export function Hero() {
         variants={containerVariants}
         className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft md:p-10"
       >
-        <h1 className="max-w-4xl text-3xl font-bold tracking-tight text-trust-blue md:text-5xl md:leading-tight">
+        <h1 className="max-w-4xl text-3xl font-bold tracking-tight text-trust-green md:text-5xl md:leading-tight">
           Medical Treatment in Turkey, Coordinated for US Patients
         </h1>
         <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-gray md:text-lg">
@@ -40,11 +40,11 @@ export function Hero() {
             href="#consultation"
             className="inline-flex items-center justify-center rounded-full bg-medical-teal px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50 md:text-base"
           >
-            Get a Free Consultation
+            Get a Treatment Plan
           </Link>
           <Link
-            href="#services"
-            className="inline-flex items-center justify-center rounded-full border border-trust-blue px-6 py-3 text-sm font-semibold text-trust-blue transition-all hover:bg-trust-blue hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust-blue/40 md:text-base"
+            href="/treatments"
+            className="inline-flex items-center justify-center rounded-full border border-trust-green px-6 py-3 text-sm font-semibold text-trust-green transition-all hover:bg-trust-green hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-trust-green/40 md:text-base"
           >
             Explore Treatments
           </Link>

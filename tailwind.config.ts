@@ -11,7 +11,7 @@ const config: Config = {
     extend: {
       colors: {
         trust: {
-          blue: "#1E3A8A"
+          green: "#059669"
         },
         medical: {
           teal: "#0F766E"

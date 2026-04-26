@@ -33,11 +33,11 @@ export function LeadCTA() {
         className="grid grid-cols-1 gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-soft md:gap-8 md:p-8 lg:grid-cols-2 lg:p-10"
       >
         <div className="flex flex-col justify-center">
-          <p className="inline-flex w-fit rounded-full bg-trust-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-trust-blue">
+          <p className="inline-flex w-fit rounded-full bg-trust-green/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-trust-green">
             Confidential Consultation
           </p>
-          <h2 className="mt-4 text-2xl font-bold tracking-tight text-trust-blue md:text-4xl">
-            Start Your Health Journey Today
+          <h2 className="mt-4 text-2xl font-bold tracking-tight text-trust-green md:text-4xl">
+            Request a Custom Treatment Plan
           </h2>
           <p className="mt-4 max-w-xl text-sm leading-7 text-slate-gray md:text-base">
             Speak with our care coordination team to receive a personalized and
@@ -122,7 +122,7 @@ export function LeadCTA() {
             type="submit"
             className="mt-1 inline-flex w-full items-center justify-center rounded-full bg-medical-teal px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50 md:text-base"
           >
-            Request Free Consultation
+            Get Your Custom Quote
           </button>
 
           <p className="inline-flex items-center justify-center gap-2 text-xs text-slate-gray/90 md:text-sm">

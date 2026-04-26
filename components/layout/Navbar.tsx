@@ -2,37 +2,58 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { House, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { label: "Services", href: "#services" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Travel Support", href: "#travel-support" },
-  { label: "About", href: "#about" }
+  { label: "All Treatments", href: "/treatments" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "About", href: "/about" }
 ] as const;
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-clean-white/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 md:px-8 lg:px-12">
-        <Link
-          href="/"
-          className="flex items-center transition-opacity hover:opacity-90"
-          aria-label="USMD home"
-        >
-          <Image
-            src="/usmd-logo.png"
-            alt="USMD logo"
-            width={160}
-            height={50}
-            priority
-            className="h-10 w-auto md:h-12"
-          />
-        </Link>
+      <div className="mx-auto flex min-h-[4.25rem] w-full max-w-7xl items-center justify-between gap-3 px-4 py-2 md:min-h-[5rem] md:px-8 md:py-2.5 lg:px-12">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+              Home
+            </span>
+            <Link
+              href="/"
+              aria-label="Go to home page"
+              className={cn(
+                "inline-flex h-9 w-9 items-center justify-center rounded-lg border text-trust-green shadow-sm transition-all sm:h-10 sm:w-10",
+                isHome
+                  ? "border-trust-green bg-trust-green/10"
+                  : "border-slate-200 bg-white hover:border-trust-green/40 hover:bg-trust-green/5"
+              )}
+            >
+              <House size={18} strokeWidth={2.2} aria-hidden />
+            </Link>
+          </div>
+          <Link
+            href="/"
+            className="flex items-center transition-opacity hover:opacity-90"
+            aria-label="USMD home"
+          >
+            <Image
+              src="/usmd-logo.png"
+              alt="USMD logo"
+              width={280}
+              height={88}
+              priority
+              className="h-12 w-auto sm:h-14 md:h-16 lg:h-[4.5rem]"
+            />
+          </Link>
+        </div>
 
         <nav className="hidden items-center gap-8 md:flex">
           {NAV_ITEMS.map((item) => (
@@ -45,7 +66,7 @@ export function Navbar() {
             </Link>
           ))}
           <Link
-            href="#consultation"
+            href="/#consultation"
             className="rounded-full bg-medical-teal px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
           >
             Inquire Now
@@ -72,6 +93,14 @@ export function Navbar() {
         )}
       >
         <nav className="flex flex-col gap-3">
+          <Link
+            href="/"
+            onClick={() => setIsOpen(false)}
+            className="inline-flex items-center gap-2 rounded-md px-2 py-2 text-sm font-semibold text-trust-green transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
+          >
+            <House size={18} aria-hidden />
+            Home
+          </Link>
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
@@ -83,7 +112,7 @@ export function Navbar() {
             </Link>
           ))}
           <Link
-            href="#consultation"
+            href="/#consultation"
             onClick={() => setIsOpen(false)}
             className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-medical-teal px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
           >

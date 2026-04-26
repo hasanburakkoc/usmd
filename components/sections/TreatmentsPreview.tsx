@@ -37,7 +37,7 @@ const reveal: Variants = {
 export function TreatmentsPreview() {
   return (
     <section
-      id="services"
+      id="treatments"
       className="mx-auto w-full max-w-7xl px-4 py-12 md:px-8 md:py-16 lg:px-12 lg:py-20"
     >
       <motion.div
@@ -49,7 +49,7 @@ export function TreatmentsPreview() {
         className="mb-8 md:mb-10"
       >
         <h2 className="text-2xl font-bold tracking-tight text-trust-green md:text-4xl">
-          Treatments Preview
+          Treatments
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-gray md:text-base">
           Explore core departments designed for patients seeking premium,

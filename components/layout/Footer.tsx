@@ -6,7 +6,9 @@ const SITE_MAP = [
   { label: "About", href: "/about" },
   { label: "How It Works", href: "/#how-it-works" },
   { label: "Treatments on homepage", href: "/#treatments" },
-  { label: "Request consultation", href: "/#consultation" }
+  { label: "Request consultation", href: "/#consultation" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms-of-service" }
 ] as const;
 
 const year = new Date().getFullYear();
@@ -62,7 +64,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             <li>
               <Link
-                href="#privacy"
+                href="/privacy-policy"
                 className="transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               >
                 Privacy Policy
@@ -70,7 +72,7 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="#terms"
+                href="/terms-of-service"
                 className="transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               >
                 Terms of Service

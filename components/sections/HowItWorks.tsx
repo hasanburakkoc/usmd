@@ -22,7 +22,8 @@ const STEPS = [
   },
   {
     title: "Recovery & Safe Return",
-    description: "5-star hotel recovery support and structured follow-up care.",
+    description:
+      "5-star hotel recovery support, structured discharge planning, and a safe journey home—then one full year of continuous support through scheduled follow-up phone consultations. The same single-point coordination team that handled your application stays accountable through post-treatment, so you are never handed off to a stranger when questions arise.",
     icon: ShieldCheck
   }
 ] as const;

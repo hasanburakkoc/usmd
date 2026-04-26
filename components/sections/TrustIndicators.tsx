@@ -1,31 +1,119 @@
-import { Building2, Hotel, Plane, UserCheck } from "lucide-react";
+import {
+  Building2,
+  Eye,
+  Headphones,
+  PhoneCall,
+  Waypoints
+} from "lucide-react";
 
-const TRUST_ITEMS = [
+const FEATURED = [
   {
-    title: "End-to-End Coordination",
-    icon: Plane
+    id: "cost-delay",
+    stat: "36%",
+    title: "U.S. adults delayed or skipped care",
+    body: "KFF reports that 36% of U.S. adults skipped or postponed needed healthcare in the past 12 months because of cost. When care feels out of reach at home, transparent international options deserve a careful, ethical introduction—not hype.",
+    accent: "border-l-4 border-l-medical-teal"
   },
   {
-    title: "Premium Accommodation",
-    icon: Hotel
+    id: "one-year",
+    stat: "1 year",
+    title: "Post-treatment follow-up you can count on",
+    body: "Our commitment does not end when you fly home. As part of our partner quality policy, we provide comprehensive follow-up and phone consultations for a full year after your treatment—so questions, recovery milestones, and next steps never land in a black hole.",
+    icon: PhoneCall,
+    accent: "border-l-4 border-l-trust-green ring-1 ring-trust-green/15 bg-gradient-to-br from-trust-green/[0.06] to-white"
+  }
+] as const;
+
+const VALUE_PILLARS = [
+  {
+    title: "Single-point coordination",
+    body: "One dedicated team carries your case from first application through travel, hospital stays, and post-treatment follow-up—so you are never bounced between silos or conflicting contacts.",
+    icon: Waypoints
   },
   {
-    title: "World-Class Hospitals",
+    title: "24/7 US-English support in Türkiye",
+    body: "Throughout your stay, you have access to native US-English speaking guides and consultants who understand American expectations around clarity, documentation, and bedside communication.",
+    icon: Headphones
+  },
+  {
+    title: "Patient safety & transparency",
+    body: "We work within strict ethical standards: clear timelines, realistic expectations, and honest conversations about risks and alternatives—because trust is built in the details, not in slogans.",
+    icon: Eye
+  },
+  {
+    title: "Authorized hospital network",
+    body: "We coordinate with vetted, authorized facilities and specialist pathways aligned to your clinical needs—never opaque referrals or unverified operators.",
     icon: Building2
-  },
-  {
-    title: "1-on-1 Patient Support",
-    icon: UserCheck
   }
 ] as const;
 
 export function TrustIndicators() {
   return (
-    <section className="mx-auto w-full max-w-7xl px-4 pb-12 pt-8 md:px-8 md:pb-16 lg:px-12 lg:pb-20">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {TRUST_ITEMS.map((item) => {
-          const Icon = item.icon;
+    <section
+      className="mx-auto w-full max-w-7xl px-4 pb-12 pt-8 md:px-8 md:pb-16 lg:px-12 lg:pb-20"
+      aria-labelledby="trust-indicators-heading"
+    >
+      <h2
+        id="trust-indicators-heading"
+        className="sr-only"
+      >
+        Trust and quality commitments
+      </h2>
 
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        {FEATURED.map((item) => {
+          if (item.id === "one-year") {
+            const Icon = item.icon;
+            return (
+              <article
+                key={item.id}
+                className={`relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-green/30 hover:shadow-lg md:p-7 ${item.accent}`}
+              >
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-trust-green">
+                      Strongest commitment
+                    </p>
+                    <p className="mt-2 text-4xl font-bold tabular-nums tracking-tight text-trust-green md:text-5xl">
+                      {item.stat}
+                    </p>
+                    <h3 className="mt-2 text-lg font-semibold text-slate-800 md:text-xl">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <div className="rounded-xl bg-trust-green/10 p-3 text-trust-green">
+                    <Icon size={26} aria-hidden="true" />
+                  </div>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-slate-gray md:text-[0.9375rem]">
+                  {item.body}
+                </p>
+              </article>
+            );
+          }
+
+          return (
+            <article
+              key={item.id}
+              className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-medical-teal/25 md:p-7 ${item.accent}`}
+            >
+              <p className="text-4xl font-bold tabular-nums tracking-tight text-medical-teal md:text-5xl">
+                {item.stat}
+              </p>
+              <h3 className="mt-3 text-lg font-semibold text-slate-800 md:text-xl">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-gray md:text-[0.9375rem]">
+                {item.body}
+              </p>
+            </article>
+          );
+        })}
+      </div>
+
+      <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {VALUE_PILLARS.map((item) => {
+          const Icon = item.icon;
           return (
             <article
               key={item.title}
@@ -37,6 +125,9 @@ export function TrustIndicators() {
               <h3 className="mt-4 text-base font-semibold text-slate-gray">
                 {item.title}
               </h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-gray/95">
+                {item.body}
+              </p>
             </article>
           );
         })}

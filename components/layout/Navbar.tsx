@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -20,9 +21,17 @@ export function Navbar() {
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 md:px-8 lg:px-12">
         <Link
           href="/"
-          className="text-2xl font-bold text-trust-green transition-opacity hover:opacity-90"
+          className="flex items-center transition-opacity hover:opacity-90"
+          aria-label="USMD home"
         >
-          USMD
+          <Image
+            src="/usmd-logo.png"
+            alt="USMD logo"
+            width={160}
+            height={50}
+            priority
+            className="h-10 w-auto md:h-12"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

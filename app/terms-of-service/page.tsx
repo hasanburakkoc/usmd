@@ -47,8 +47,8 @@ export default function TermsOfServicePage() {
             </h2>
             <p>
               By accessing our website or submitting an inquiry, you agree to
-              these Terms of Service and our Privacy Policy. If you do not agree,
-              please do not use our services.
+              these Terms of Service. If you do not agree, please do not use our
+              services.
             </p>
           </section>
 

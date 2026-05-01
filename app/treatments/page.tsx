@@ -3,6 +3,26 @@ import Link from "next/link";
 import { LeadCTA } from "@/components/sections/LeadCTA";
 import { TREATMENT_CATEGORIES } from "@/lib/constants";
 
+const CATEGORY_IMAGE_MAP: Record<string, string> = {
+  "Hair Restoration": "/assets/treatments/categories/hair-restoration.png",
+  "Dental Treatments": "/assets/treatments/categories/dental-treatments.png",
+  "Plastic & Aesthetic Surgery":
+    "/assets/treatments/categories/plastic-Aesthetic-surgery.png",
+  Ophthalmology: "/assets/treatments/categories/Ophthalmology.png",
+  "Orthopedics & Traumatology":
+    "/assets/treatments/categories/Orthopedics-traumatology.png",
+  "Reproductive Medicine":
+    "/assets/treatments/categories/Reproductive-medicine.png",
+  "Cardiology & Cardiovascular Surgery":
+    "/assets/treatments/categories/Cardiology-Cardiovascular-Surgery.png",
+  Oncology: "/assets/treatments/categories/Oncology.png",
+  "Neurosurgery & Neurology":
+    "/assets/treatments/categories/Neurosurgery-Neurology.png",
+  "Transplant Surgery": "/assets/treatments/categories/transplant-surgery.png",
+  "General & Specialized Surgery":
+    "/assets/treatments/categories/General-specialized-surgery.png"
+};
+
 export default function TreatmentsPage() {
   return (
     <main className="mx-auto min-h-screen w-full max-w-7xl px-4 py-10 md:px-8 md:py-14 lg:px-12 lg:py-16">
@@ -23,46 +43,20 @@ export default function TreatmentsPage() {
         </Link>
       </section>
 
-      <section className="mt-6 overflow-hidden rounded-2xl border border-trust-green/20 bg-white shadow-soft md:mt-8">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="relative min-h-[220px] md:min-h-[100%]">
-            <Image
-              src="/assets/treatments/fizik-tedavi.png"
-              alt="Physical therapy session in a modern clinic"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-          <div className="flex items-center p-5 md:p-8">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-medical-teal">
-                Featured Support Pathway
-              </p>
-              <h2 className="mt-2 text-xl font-semibold text-trust-green md:text-2xl">
-                Physical Therapy & Rehabilitation Guidance
-              </h2>
-              <p className="mt-3 text-sm leading-7 text-slate-gray md:text-base">
-                For orthopedic and mobility-focused treatments, we help you
-                coordinate post-procedure rehabilitation planning with trusted
-                partner clinics.
-              </p>
-              <Link
-                href="/#consultation"
-                className="mt-5 inline-flex items-center justify-center rounded-full bg-medical-teal px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
-              >
-                Discuss Your Recovery Plan
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="mt-6 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-2 lg:grid-cols-3">
         {TREATMENT_CATEGORIES.map((category, index) => (
           <div key={category.category} className="contents">
             <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-green/30">
-              <h2 className="text-lg font-semibold text-trust-green">
+              <div className="relative overflow-hidden rounded-xl bg-slate-100">
+                <Image
+                  src={CATEGORY_IMAGE_MAP[category.category]}
+                  alt={category.category}
+                  width={1200}
+                  height={700}
+                  className="h-44 w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                />
+              </div>
+              <h2 className="mt-4 text-lg font-semibold text-trust-green">
                 {category.category}
               </h2>
               <ul className="mt-3 space-y-2">

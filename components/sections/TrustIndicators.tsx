@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Building2,
   Eye,
@@ -28,22 +29,26 @@ const VALUE_PILLARS = [
   {
     title: "Single-point coordination",
     body: "One team from intake through follow-up—no silos.",
-    icon: Waypoints
+    icon: Waypoints,
+    image: "/assets/how-it-works/single-point-coordination.png"
   },
   {
     title: "24/7 US-English support in Türkiye",
     body: "US-English guides on call around the clock while you are here.",
-    icon: Headphones
+    icon: Headphones,
+    image: "/assets/how-it-works/us-english-support.png"
   },
   {
     title: "Patient safety & transparency",
     body: "Honest timelines, clear risks, ethical standards.",
-    icon: Eye
+    icon: Eye,
+    image: "/assets/how-it-works/patient-safety.png"
   },
   {
     title: "Authorized hospital network",
     body: "Vetted facilities only—no mystery referrals.",
-    icon: Building2
+    icon: Building2,
+    image: "/assets/how-it-works/hospital-network.png"
   }
 ] as const;
 
@@ -119,6 +124,15 @@ export function TrustIndicators() {
               key={item.title}
               className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-green/25"
             >
+              <div className="relative mb-4 overflow-hidden rounded-xl bg-slate-100">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={1200}
+                  height={700}
+                  className="h-32 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
               <div className="inline-flex rounded-xl bg-trust-green/10 p-3 text-trust-green transition-colors group-hover:bg-trust-green/15">
                 <Icon size={22} aria-hidden="true" />
               </div>

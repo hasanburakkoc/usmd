@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { TREATMENT_CATEGORIES } from "@/lib/constants";
 
 const SITE_MAP = [
   { label: "Home", href: "/" },
@@ -8,6 +7,7 @@ const SITE_MAP = [
   { label: "How It Works", href: "/#how-it-works" },
   { label: "Treatments on homepage", href: "/#treatments" },
   { label: "Request consultation", href: "/#consultation" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms of Service", href: "/terms-of-service" }
 ] as const;
 
@@ -16,8 +16,8 @@ const year = new Date().getFullYear();
 export function Footer() {
   return (
     <footer className="bg-slate-gray text-white/80">
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-10 md:gap-8 md:px-8 lg:grid-cols-12 lg:gap-10 lg:px-12">
-        <div className="lg:col-span-3">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-10 md:grid-cols-2 md:gap-8 md:px-8 lg:grid-cols-12 lg:gap-10 lg:px-12">
+        <div className="lg:col-span-4">
           <h3 className="text-xl font-bold text-white">USMD</h3>
           <p className="mt-3 text-sm leading-6">
             Premium medical tourism coordination for US patients seeking trusted
@@ -25,7 +25,7 @@ export function Footer() {
           </p>
         </div>
 
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-5">
           <h4 className="text-sm font-semibold uppercase tracking-wide text-white">
             Site map
           </h4>
@@ -64,6 +64,14 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             <li>
               <Link
+                href="/privacy-policy"
+                className="transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+              >
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/terms-of-service"
                 className="transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               >
@@ -71,39 +79,6 @@ export function Footer() {
               </Link>
             </li>
           </ul>
-        </div>
-
-        <div className="lg:col-span-6">
-          <h4 className="text-sm font-semibold uppercase tracking-wide text-white">
-            Treatments Directory
-          </h4>
-          <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {TREATMENT_CATEGORIES.map((category) => (
-              <div
-                key={category.category}
-                className="rounded-xl border border-trust-green/20 bg-trust-green/10 p-3"
-              >
-                <Link
-                  href="/treatments"
-                  className="text-sm font-semibold text-white transition-colors hover:text-trust-green-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-                >
-                  {category.category}
-                </Link>
-                <ul className="mt-2 space-y-1.5">
-                  {category.treatments.map((treatment) => (
-                    <li key={category.category + treatment}>
-                      <Link
-                        href="/treatments"
-                        className="text-xs leading-5 text-white/85 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-                      >
-                        {treatment}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 

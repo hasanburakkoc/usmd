@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LeadCTA } from "@/components/sections/LeadCTA";
 import { TREATMENT_CATEGORIES } from "@/lib/constants";
@@ -20,6 +21,41 @@ export default function TreatmentsPage() {
         >
           Request Your Custom Treatment Plan
         </Link>
+      </section>
+
+      <section className="mt-6 overflow-hidden rounded-2xl border border-trust-green/20 bg-white shadow-soft md:mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="relative min-h-[220px] md:min-h-[100%]">
+            <Image
+              src="/assets/treatments/fizik-tedavi.png"
+              alt="Physical therapy session in a modern clinic"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div className="flex items-center p-5 md:p-8">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-medical-teal">
+                Featured Support Pathway
+              </p>
+              <h2 className="mt-2 text-xl font-semibold text-trust-green md:text-2xl">
+                Physical Therapy & Rehabilitation Guidance
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-slate-gray md:text-base">
+                For orthopedic and mobility-focused treatments, we help you
+                coordinate post-procedure rehabilitation planning with trusted
+                partner clinics.
+              </p>
+              <Link
+                href="/#consultation"
+                className="mt-5 inline-flex items-center justify-center rounded-full bg-medical-teal px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
+              >
+                Discuss Your Recovery Plan
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="mt-6 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-2 lg:grid-cols-3">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { Plane, ShieldCheck, Stethoscope, Video } from "lucide-react";
 
@@ -7,24 +8,28 @@ const STEPS = [
   {
     title: "Free Online Consultation",
     description: "Video call and medical assessment tailored to your needs.",
-    icon: Video
+    icon: Video,
+    image: "/assets/how-it-works/us-english-support.png"
   },
   {
     title: "Travel & VIP Transfer",
     description: "Flight coordination and VIP airport greeting on arrival.",
-    icon: Plane
+    icon: Plane,
+    image: "/assets/how-it-works/single-point-coordination.png"
   },
   {
     title: "Premium Treatment",
     description:
       "JCI-accredited hospital and a dedicated US-English speaking host.",
-    icon: Stethoscope
+    icon: Stethoscope,
+    image: "/assets/how-it-works/hospital-network.png"
   },
   {
     title: "Recovery & Safe Return",
     description:
       "Recovery support and a safe trip home—then one year of follow-up calls with the same coordination team.",
-    icon: ShieldCheck
+    icon: ShieldCheck,
+    image: "/assets/how-it-works/patient-safety.png"
   }
 ] as const;
 
@@ -80,21 +85,28 @@ export function HowItWorks() {
               variants={reveal}
               className="relative rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-green/25 md:p-6"
             >
-              <div className="flex items-start gap-4">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-medical-teal text-sm font-semibold text-white">
+              <div className="relative overflow-hidden rounded-xl bg-slate-100">
+                <Image
+                  src={step.image}
+                  alt={step.title}
+                  width={1200}
+                  height={750}
+                  className="h-44 w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                />
+                <span className="absolute left-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-medical-teal text-sm font-semibold text-white shadow-sm">
                   {stepNumber}
                 </span>
-                <div className="flex-1">
-                  <div className="inline-flex rounded-xl bg-trust-green/10 p-2 text-trust-green">
-                    <Icon size={20} aria-hidden="true" />
-                  </div>
-                  <h3 className="mt-3 text-base font-semibold text-slate-gray md:text-lg">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-slate-gray/90">
-                    {step.description}
-                  </p>
-                </div>
+                <span className="absolute right-3 top-3 inline-flex rounded-lg bg-white/90 p-2 text-trust-green shadow-sm backdrop-blur">
+                  <Icon size={18} aria-hidden="true" />
+                </span>
+              </div>
+              <div className="mt-4">
+                <h3 className="text-base font-semibold text-slate-gray md:text-lg">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-gray/90">
+                  {step.description}
+                </p>
               </div>
             </motion.article>
           );

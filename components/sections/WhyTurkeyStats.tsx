@@ -47,13 +47,15 @@ function SurveyMetricPill({
         delay: 0.15 + index * 0.08,
         ease: EASE
       }}
-      className="rounded-xl border border-slate-200/90 bg-white/90 px-4 py-3 text-center shadow-sm"
+      className="flex flex-col items-center px-2 text-center md:px-6 lg:px-10"
     >
-      <p className="text-2xl font-bold tabular-nums text-trust-green md:text-3xl">
+      <p className="text-4xl font-semibold tabular-nums tracking-tight text-trust-green md:text-[2.625rem] md:leading-none lg:text-5xl">
         {display}
-        <span className="text-lg font-bold md:text-xl">{metric.suffix}</span>
+        <span className="ml-0.5 align-top text-2xl font-semibold md:text-3xl lg:text-4xl">
+          {metric.suffix}
+        </span>
       </p>
-      <p className="mt-1 text-xs font-medium leading-snug text-slate-gray">
+      <p className="mx-auto mt-3 max-w-[15rem] text-xs font-medium leading-relaxed text-slate-600 md:max-w-none md:text-sm">
         {metric.label}
       </p>
     </motion.div>
@@ -72,27 +74,30 @@ function SurveyBlock() {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: 0.08, ease: EASE }}
       variants={reveal}
-      className="mx-auto mt-4 max-w-4xl rounded-2xl border border-dashed border-slate-300/90 bg-slate-50/80 p-5 md:mt-6 md:p-6"
+      className="mx-auto mt-6 max-w-5xl md:mt-8"
     >
-      <motion.p
-        className="text-xs font-semibold uppercase tracking-wide text-medical-teal"
-        initial={{ opacity: 0, x: -6 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.4, ease: EASE }}
-      >
-        Survey-based research
-      </motion.p>
-      <p className="mt-2 text-sm leading-relaxed text-slate-gray md:text-base">
-        In a 2025 patient satisfaction study, surveyed medical travelers
-        reported strong willingness to return and to recommend Türkiye. The
-        figures below are from that study only—not a national or universal
-        patient sample.
-      </p>
+      <div className="px-1 pb-2 pt-4 md:px-3 md:pb-4 md:pt-6">
+        <motion.p
+          className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-medical-teal"
+          initial={{ opacity: 0, x: -6 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.4, ease: EASE }}
+        >
+          Survey-based research
+        </motion.p>
+        <div className="mt-3 h-px w-12 bg-gradient-to-r from-medical-teal/70 to-transparent" aria-hidden />
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-base md:leading-relaxed">
+          In a 2025 patient satisfaction study, surveyed medical travelers
+          reported strong willingness to return and to recommend Türkiye. The
+          figures below are from that study only—not a national or universal
+          patient sample.
+        </p>
 
-      <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        {SURVEY_METRICS.map((m, i) => (
-          <SurveyMetricPill key={m.label} metric={m} index={i} inView={inView} />
-        ))}
+        <div className="mt-10 grid grid-cols-1 gap-12 sm:mt-12 sm:gap-10 md:mt-14 md:grid-cols-3 md:gap-0 md:divide-x md:divide-slate-200/60">
+          {SURVEY_METRICS.map((m, i) => (
+            <SurveyMetricPill key={m.label} metric={m} index={i} inView={inView} />
+          ))}
+        </div>
       </div>
     </motion.div>
   );

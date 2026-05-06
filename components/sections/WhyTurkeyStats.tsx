@@ -76,24 +76,27 @@ function SurveyBlock() {
       variants={reveal}
       className="mx-auto mt-6 max-w-5xl md:mt-8"
     >
-      <div className="px-1 pb-2 pt-4 md:px-3 md:pb-4 md:pt-6">
+      <div className="rounded-3xl border border-slate-200/50 bg-gradient-to-b from-white to-slate-50/40 px-6 py-9 text-center shadow-[0_2px_44px_-16px_rgba(15,23,42,0.12)] ring-1 ring-slate-100 md:px-12 md:py-11">
         <motion.p
-          className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-medical-teal"
-          initial={{ opacity: 0, x: -6 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-medical-teal"
+          initial={{ opacity: 0, y: 6 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, ease: EASE }}
         >
           Survey-based research
         </motion.p>
-        <div className="mt-3 h-px w-12 bg-gradient-to-r from-medical-teal/70 to-transparent" aria-hidden />
-        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-base md:leading-relaxed">
+        <div
+          className="mx-auto mt-4 h-px w-14 bg-gradient-to-r from-transparent via-medical-teal/55 to-transparent"
+          aria-hidden
+        />
+        <p className="mx-auto mt-5 max-w-2xl font-light leading-relaxed text-slate-500 md:mt-6 md:max-w-2xl md:text-[0.9375rem] md:leading-8">
           In a 2025 patient satisfaction study, surveyed medical travelers
           reported strong willingness to return and to recommend Türkiye. The
           figures below are from that study only—not a national or universal
           patient sample.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-12 sm:mt-12 sm:gap-10 md:mt-14 md:grid-cols-3 md:gap-0 md:divide-x md:divide-slate-200/60">
+        <div className="mt-10 grid grid-cols-1 gap-12 border-t border-slate-200/60 pt-10 sm:mt-12 sm:gap-10 md:mt-12 md:grid-cols-3 md:gap-0 md:divide-x md:divide-slate-200/55 md:border-t-0 md:pt-0">
           {SURVEY_METRICS.map((m, i) => (
             <SurveyMetricPill key={m.label} metric={m} index={i} inView={inView} />
           ))}

@@ -25,14 +25,14 @@ function HeroWaveDivider() {
       aria-hidden
     >
       <svg
-        className="relative block h-16 w-full min-w-[1200px] md:h-[7rem]"
+        className="relative block h-10 w-full min-w-[1200px] md:h-12"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 80"
+        viewBox="0 0 1440 40"
         preserveAspectRatio="none"
       >
         <path
           fill="#F8FAFC"
-          d="M0,56L80,48C160,40,320,24,480,28C640,32,800,56,960,60C1120,64,1280,48,1360,40L1440,32L1440,80L0,80Z"
+          d="M0,34 Q720,31 1440,34 L1440,40 L0,40 Z"
         />
       </svg>
     </div>

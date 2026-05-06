@@ -27,8 +27,8 @@ export function Navbar() {
           aria-label="USMD home"
         >
           <Image
-            src="/usmd-logo.png"
-            alt="USMD logo"
+            src="/lal-altın-logo.png"
+            alt="Lal Altın logo"
             width={280}
             height={88}
             priority

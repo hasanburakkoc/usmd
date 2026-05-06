@@ -49,13 +49,13 @@ function SurveyMetricPill({
       }}
       className="flex flex-col items-center px-2 text-center md:px-6 lg:px-10"
     >
-      <p className="text-4xl font-semibold tabular-nums tracking-tight text-trust-green md:text-[2.625rem] md:leading-none lg:text-5xl">
+      <p className="text-4xl font-semibold tabular-nums tracking-tight text-white md:text-[2.625rem] md:leading-none lg:text-5xl">
         {display}
         <span className="ml-0.5 align-top text-2xl font-semibold md:text-3xl lg:text-4xl">
           {metric.suffix}
         </span>
       </p>
-      <p className="mx-auto mt-3 max-w-[15rem] text-xs font-medium leading-relaxed text-slate-600 md:max-w-none md:text-sm">
+      <p className="mx-auto mt-3 max-w-[15rem] text-xs font-medium leading-relaxed text-emerald-50/95 md:max-w-none md:text-sm">
         {metric.label}
       </p>
     </motion.div>
@@ -76,9 +76,9 @@ function SurveyBlock() {
       variants={reveal}
       className="mx-auto mt-6 max-w-5xl md:mt-8"
     >
-      <div className="rounded-3xl border border-slate-200/50 bg-gradient-to-b from-white to-slate-50/40 px-6 py-9 text-center shadow-[0_2px_44px_-16px_rgba(15,23,42,0.12)] ring-1 ring-slate-100 md:px-12 md:py-11">
+      <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-medical-teal via-trust-green to-emerald-800 px-6 py-9 text-center shadow-[0_8px_40px_-12px_rgba(5,150,105,0.45)] ring-1 ring-white/10 md:px-12 md:py-11">
         <motion.p
-          className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-medical-teal"
+          className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-emerald-50"
           initial={{ opacity: 0, y: 6 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, ease: EASE }}
@@ -86,17 +86,17 @@ function SurveyBlock() {
           Survey-based research
         </motion.p>
         <div
-          className="mx-auto mt-4 h-px w-14 bg-gradient-to-r from-transparent via-medical-teal/55 to-transparent"
+          className="mx-auto mt-4 h-px w-14 bg-gradient-to-r from-transparent via-white/45 to-transparent"
           aria-hidden
         />
-        <p className="mx-auto mt-5 max-w-2xl font-light leading-relaxed text-slate-500 md:mt-6 md:max-w-2xl md:text-[0.9375rem] md:leading-8">
+        <p className="mx-auto mt-5 max-w-2xl font-light leading-relaxed text-white/90 md:mt-6 md:max-w-2xl md:text-[0.9375rem] md:leading-8">
           In a 2025 patient satisfaction study, surveyed medical travelers
           reported strong willingness to return and to recommend Türkiye. The
           figures below are from that study only—not a national or universal
           patient sample.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-12 border-t border-slate-200/60 pt-10 sm:mt-12 sm:gap-10 md:mt-12 md:grid-cols-3 md:gap-0 md:divide-x md:divide-slate-200/55 md:border-t-0 md:pt-0">
+        <div className="mt-10 grid grid-cols-1 gap-12 border-t border-white/20 pt-10 sm:mt-12 sm:gap-10 md:mt-12 md:grid-cols-3 md:gap-0 md:divide-x md:divide-white/25 md:border-t-0 md:pt-0">
           {SURVEY_METRICS.map((m, i) => (
             <SurveyMetricPill key={m.label} metric={m} index={i} inView={inView} />
           ))}

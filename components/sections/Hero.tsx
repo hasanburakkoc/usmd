@@ -57,7 +57,7 @@ export function Hero() {
           <div className="lg:col-span-5">
             <div className="relative overflow-hidden rounded-2xl border border-trust-green/10 bg-slate-100 shadow-lg">
               <Image
-                src="/assets/hero/hero-medical-team.jpg"
+                src="/assets/hero/new-hero.png"
                 alt="Patient journey guidance team in a modern clinic lobby"
                 width={1600}
                 height={900}

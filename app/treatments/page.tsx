@@ -1,29 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LeadCTA } from "@/components/sections/LeadCTA";
-import { TREATMENT_CATEGORIES } from "@/lib/constants";
+import { treatmentImageSrcForSlug } from "@/lib/constants";
+import {
+  listTreatmentCategories,
+  treatmentNamesForLeadForm
+} from "@/lib/firestore/queries";
 
-const CATEGORY_IMAGE_MAP: Record<string, string> = {
-  "Hair Restoration": "/assets/treatments/categories/hair-restoration.png",
-  "Dental Treatments": "/assets/treatments/categories/dental-treatments.png",
-  "Plastic & Aesthetic Surgery":
-    "/assets/treatments/categories/plastic-Aesthetic-surgery.png",
-  Ophthalmology: "/assets/treatments/categories/Ophthalmology.png",
-  "Orthopedics & Traumatology":
-    "/assets/treatments/categories/Orthopedics-traumatology.png",
-  "Reproductive Medicine":
-    "/assets/treatments/categories/Reproductive-medicine.png",
-  "Cardiology & Cardiovascular Surgery":
-    "/assets/treatments/categories/Cardiology-Cardiovascular-Surgery.png",
-  Oncology: "/assets/treatments/categories/Oncology.png",
-  "Neurosurgery & Neurology":
-    "/assets/treatments/categories/Neurosurgery-Neurology.png",
-  "Transplant Surgery": "/assets/treatments/categories/transplant-surgery.png",
-  "General & Specialized Surgery":
-    "/assets/treatments/categories/General-specialized-surgery.png"
-};
+export const dynamic = "force-dynamic";
 
-export default function TreatmentsPage() {
+export default async function TreatmentsPage() {
+  const categories = await listTreatmentCategories();
+  const treatmentOptions = treatmentNamesForLeadForm(categories);
+
   return (
     <main className="mx-auto min-h-screen w-full max-w-7xl px-4 py-10 md:px-8 md:py-14 lg:px-12 lg:py-16">
       <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft md:p-10">
@@ -44,49 +33,63 @@ export default function TreatmentsPage() {
       </section>
 
       <section className="mt-6 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-2 lg:grid-cols-3">
-        {TREATMENT_CATEGORIES.map((category, index) => (
-          <div key={category.category} className="contents">
-            <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-green/30">
-              <div className="relative overflow-hidden rounded-xl bg-slate-100">
-                <Image
-                  src={CATEGORY_IMAGE_MAP[category.category]}
-                  alt={category.category}
-                  width={1200}
-                  height={700}
-                  className="h-44 w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
-                />
-              </div>
-              <h2 className="mt-4 text-lg font-semibold text-trust-green">
-                {category.category}
-              </h2>
-              <ul className="mt-3 space-y-2">
-                {category.treatments.map((treatment) => (
-                  <li
-                    key={treatment}
-                    className="rounded-lg bg-clean-white px-3 py-2 text-sm text-slate-gray"
-                  >
-                    {treatment}
-                  </li>
-                ))}
-              </ul>
-            </article>
-            {(index + 1) % 3 === 0 && index < TREATMENT_CATEGORIES.length - 1 ? (
-              <div className="md:col-span-2 lg:col-span-3">
-                <div className="rounded-2xl border border-trust-green/20 bg-gradient-to-r from-trust-green/[0.08] via-white to-trust-green/[0.08] p-5 text-center shadow-soft">
-                  <p className="text-sm font-medium text-slate-gray md:text-base">
-                    Need guidance on these options?
-                  </p>
-                  <Link
-                    href="/#consultation"
-                    className="mt-3 inline-flex items-center justify-center rounded-full bg-medical-teal px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
-                  >
-                    Get a Quote for These Treatments
-                  </Link>
+        {categories.map((category, index) => {
+          const imgSrc = treatmentImageSrcForSlug(category.slug);
+
+          return (
+            <div key={category.slug} className="contents">
+              <article className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-green/30">
+                <div className="relative overflow-hidden rounded-xl bg-slate-100">
+                  {imgSrc ? (
+                    <Image
+                      src={imgSrc}
+                      alt={category.name}
+                      width={1200}
+                      height={700}
+                      className="h-44 w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                    />
+                  ) : (
+                    <div
+                      className="flex h-44 w-full items-center justify-center bg-gradient-to-br from-slate-200 to-slate-100 text-sm text-slate-500"
+                      role="img"
+                      aria-label={category.name}
+                    >
+                      {category.name}
+                    </div>
+                  )}
                 </div>
-              </div>
-            ) : null}
-          </div>
-        ))}
+                <h2 className="mt-4 text-lg font-semibold text-trust-green">
+                  {category.name}
+                </h2>
+                <ul className="mt-3 space-y-2">
+                  {category.treatments.map((treatment) => (
+                    <li
+                      key={`${category.slug}-${treatment}`}
+                      className="rounded-lg bg-clean-white px-3 py-2 text-sm text-slate-gray"
+                    >
+                      {treatment}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+              {(index + 1) % 3 === 0 && index < categories.length - 1 ? (
+                <div className="md:col-span-2 lg:col-span-3">
+                  <div className="rounded-2xl border border-trust-green/20 bg-gradient-to-r from-trust-green/[0.08] via-white to-trust-green/[0.08] p-5 text-center shadow-soft">
+                    <p className="text-sm font-medium text-slate-gray md:text-base">
+                      Need guidance on these options?
+                    </p>
+                    <Link
+                      href="/#consultation"
+                      className="mt-3 inline-flex items-center justify-center rounded-full bg-medical-teal px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50"
+                    >
+                      Get a Quote for These Treatments
+                    </Link>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
       </section>
 
       <section className="mt-10 rounded-2xl border border-trust-green/20 bg-gradient-to-br from-trust-green/[0.07] to-white p-6 text-center shadow-soft md:mt-14 md:p-10">
@@ -105,7 +108,7 @@ export default function TreatmentsPage() {
         </Link>
       </section>
 
-      <LeadCTA />
+      <LeadCTA treatmentOptions={treatmentOptions} />
     </main>
   );
 }

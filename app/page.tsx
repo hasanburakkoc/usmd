@@ -4,16 +4,27 @@ import { LeadCTA } from "@/components/sections/LeadCTA";
 import { TreatmentsPreview } from "@/components/sections/TreatmentsPreview";
 import { TrustIndicators } from "@/components/sections/TrustIndicators";
 import { WhyTurkeyStats } from "@/components/sections/WhyTurkeyStats";
+import {
+  listTreatmentCategories,
+  toHomeHighlights,
+  treatmentNamesForLeadForm
+} from "@/lib/firestore/queries";
 
-export default function HomePage() {
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const categories = await listTreatmentCategories();
+  const highlights = toHomeHighlights(categories);
+  const treatmentOptions = treatmentNamesForLeadForm(categories);
+
   return (
     <main className="min-h-screen">
       <Hero />
       <WhyTurkeyStats />
       <TrustIndicators />
       <HowItWorks />
-      <TreatmentsPreview />
-      <LeadCTA />
+      <TreatmentsPreview highlights={highlights} />
+      <LeadCTA treatmentOptions={treatmentOptions} />
     </main>
   );
 }

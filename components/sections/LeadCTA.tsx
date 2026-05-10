@@ -1,8 +1,8 @@
 "use client";
 
+import { type FormEvent, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
-import { LEAD_FORM_TREATMENT_OPTIONS } from "@/lib/constants";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -11,7 +11,65 @@ const reveal: Variants = {
   show: { opacity: 1, y: 0 }
 };
 
-export function LeadCTA() {
+type Props = {
+  treatmentOptions: string[];
+};
+
+export function LeadCTA({ treatmentOptions }: Props) {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
+    "idle"
+  );
+  const [errorMsg, setErrorMsg] = useState<string>("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === "sending") return;
+
+    const form = e.currentTarget;
+    setErrorMsg("");
+    setStatus("sending");
+
+    const fd = new FormData(form);
+    const payload = {
+      fullName: String(fd.get("fullName") ?? "").trim(),
+      email: String(fd.get("email") ?? "").trim(),
+      phone: String(fd.get("phone") ?? "").trim(),
+      treatment: String(fd.get("treatment") ?? "").trim(),
+      message: String(fd.get("message") ?? "").trim()
+    };
+
+    try {
+      const res = await fetch("/api/consultations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      let data: { error?: string } = {};
+      try {
+        data = (await res.json()) as { error?: string };
+      } catch {
+        /* empty body */
+      }
+
+      if (!res.ok) {
+        setStatus("error");
+        setErrorMsg(
+          typeof data.error === "string"
+            ? data.error
+            : "Something went wrong. Please try again."
+        );
+        return;
+      }
+
+      form.reset();
+      setStatus("success");
+    } catch {
+      setStatus("error");
+      setErrorMsg("Something went wrong. Please try again.");
+    }
+  }
+
   return (
     <section
       id="consultation"
@@ -38,8 +96,7 @@ export function LeadCTA() {
           </p>
         </div>
 
-        {/* Native HTML validation keeps the first release secure and reliable. */}
-        <form className="grid grid-cols-1 gap-4" noValidate={false}>
+        <form className="grid grid-cols-1 gap-4" noValidate onSubmit={handleSubmit}>
           <label className="text-sm font-medium text-slate-gray" htmlFor="fullName">
             Full Name
           </label>
@@ -92,7 +149,7 @@ export function LeadCTA() {
             <option value="" disabled>
               Select a treatment
             </option>
-            {LEAD_FORM_TREATMENT_OPTIONS.map((option) => (
+            {treatmentOptions.map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>
@@ -113,10 +170,26 @@ export function LeadCTA() {
 
           <button
             type="submit"
-            className="mt-1 inline-flex w-full items-center justify-center rounded-full bg-medical-teal px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50 md:text-base"
+            disabled={status === "sending"}
+            className="mt-1 inline-flex w-full items-center justify-center rounded-full bg-medical-teal px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-medical-teal/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-medical-teal/50 disabled:opacity-70 md:text-base"
           >
-            Get Your Custom Quote
+            {status === "sending" ? "Sending…" : "Get Your Custom Quote"}
           </button>
+
+          {status === "success" ? (
+            <p
+              className="text-center text-sm font-medium text-medical-teal"
+              role="status"
+            >
+              Thank you — we received your message and will be in touch.
+            </p>
+          ) : null}
+
+          {status === "error" && errorMsg ? (
+            <p className="text-center text-sm text-red-600" role="alert">
+              {errorMsg}
+            </p>
+          ) : null}
 
           <p className="inline-flex items-center justify-center gap-2 text-xs text-slate-gray/90 md:text-sm">
             <ShieldCheck size={16} className="text-medical-teal" aria-hidden="true" />

@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { HeartPulse, Scissors, Smile, Weight, type LucideIcon } from "lucide-react";
-import type { HomeHighlightIconKey } from "@/lib/constants";
-import { TREATMENT_HOME_HIGHLIGHTS } from "@/lib/constants";
+import type {
+  HomeHighlightIconKey,
+  TreatmentHomeHighlight
+} from "@/lib/firestore/types";
 
 const ICON_MAP: Record<HomeHighlightIconKey, LucideIcon> = {
   scissors: Scissors,
@@ -20,7 +22,11 @@ const reveal: Variants = {
   show: { opacity: 1, y: 0 }
 };
 
-export function TreatmentsPreview() {
+type Props = {
+  highlights: TreatmentHomeHighlight[];
+};
+
+export function TreatmentsPreview({ highlights }: Props) {
   return (
     <section
       id="treatments"
@@ -44,12 +50,17 @@ export function TreatmentsPreview() {
       </motion.div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {TREATMENT_HOME_HIGHLIGHTS.map((item, index) => {
+        {highlights.length === 0 ? (
+          <p className="col-span-full rounded-2xl border border-slate-200 bg-clean-white px-4 py-6 text-center text-sm text-slate-gray">
+            Treatment highlights are not configured yet.
+          </p>
+        ) : null}
+        {highlights.map((item, index) => {
           const Icon = ICON_MAP[item.icon];
 
           return (
             <motion.article
-              key={item.category}
+              key={item.slug}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}

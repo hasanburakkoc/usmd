@@ -44,7 +44,7 @@ export function Hero() {
     <section className="relative isolate w-full overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets/hero/new-hero.png"
+          src="/assets/hero/main-image.png"
           alt=""
           fill
           className="object-cover object-center"

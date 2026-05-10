@@ -8,7 +8,6 @@ const SITE_MAP = [
   { label: "How It Works", href: "/#how-it-works" },
   { label: "Treatments on homepage", href: "/#treatments" },
   { label: "Request consultation", href: "/#consultation" },
-  { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms of Service", href: "/terms-of-service" }
 ] as const;
 
@@ -22,7 +21,7 @@ export function Footer() {
           <h3 className="text-xl font-bold text-white">USMD</h3>
           <p className="mt-3 text-sm leading-6">
             Premium medical tourism coordination for US patients seeking trusted
-            treatment pathways in Turkey.
+            treatment pathways in Türkiye.
           </p>
         </div>
 
@@ -73,14 +72,6 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             <li>
               <Link
-                href="/privacy-policy"
-                className="transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-              >
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/terms-of-service"
                 className="transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               >
@@ -98,7 +89,7 @@ export function Footer() {
         <p className="mx-auto mt-4 w-full max-w-7xl text-xs leading-5 text-white/70 md:text-sm">
           USMD is a medical tourism facilitator, not a healthcare provider.
           Treatments are performed by independent, certified medical facilities
-          in Turkey. Please consult with your local physician before making
+          in Türkiye. Please consult with your local physician before making
           medical decisions.
         </p>
       </div>

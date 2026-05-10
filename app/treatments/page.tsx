@@ -31,9 +31,9 @@ export default function TreatmentsPage() {
           Treatments
         </h1>
         <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-gray md:text-base">
-          Explore our full treatment catalog across certified medical
-          departments in Turkey, curated for US patient coordination and
-          continuity of care.
+          The four focus areas highlighted on our homepage match the departments
+          below; explore our full catalog across certified medical departments in
+          Türkiye, curated for US patient coordination and continuity of care.
         </p>
         <Link
           href="/#consultation"

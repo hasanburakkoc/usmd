@@ -67,7 +67,7 @@ export function Hero() {
       >
         <div className="max-w-2xl">
           <h1 className="text-3xl font-bold tracking-tight text-white md:text-5xl md:leading-tight">
-            Medical Treatment in Turkey, Coordinated for US Patients
+            Medical Treatment in Türkiye, Coordinated for US Patients
           </h1>
           <p className="mt-5 max-w-xl text-sm leading-7 text-white/90 md:text-lg md:leading-8">
             From consultation to airport pickup, hospital appointments, hotel
@@ -92,7 +92,7 @@ export function Hero() {
 
           <p className="mt-8 max-w-xl text-xs text-white/80 md:text-sm">
             Dedicated coordinators supporting your full treatment trip in
-            Turkey.
+            Türkiye.
           </p>
         </div>
       </motion.div>

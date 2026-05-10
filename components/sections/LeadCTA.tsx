@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
+import { LEAD_FORM_TREATMENT_OPTIONS } from "@/lib/constants";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -9,14 +10,6 @@ const reveal: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0 }
 };
-
-const TREATMENT_OPTIONS = [
-  "Hair Transplant",
-  "Dental Aesthetics",
-  "Weight Loss Surgery",
-  "Plastic Surgery",
-  "Other"
-] as const;
 
 export function LeadCTA() {
   return (
@@ -99,7 +92,7 @@ export function LeadCTA() {
             <option value="" disabled>
               Select a treatment
             </option>
-            {TREATMENT_OPTIONS.map((option) => (
+            {LEAD_FORM_TREATMENT_OPTIONS.map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>

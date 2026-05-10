@@ -1,6 +1,48 @@
 export const APP_NAME = "USMD";
 export const APP_DESCRIPTION =
-  "Premier health tourism platform for US citizens seeking trusted treatment in Turkey.";
+  "Premier health tourism platform for US citizens seeking trusted treatment in Türkiye.";
+
+/** Lucide icon key for homepage treatment highlights (mapped in TreatmentsPreview). */
+export type HomeHighlightIconKey = "scissors" | "smile" | "heart-pulse" | "weight";
+
+export interface TreatmentHomeHighlight {
+  category: string;
+  teaser: string;
+  icon: HomeHighlightIconKey;
+}
+
+/** Matches `TREATMENT_CATEGORIES[].category` exactly — same four focus areas site-wide. */
+export const TREATMENT_HOME_HIGHLIGHTS: TreatmentHomeHighlight[] = [
+  {
+    category: "Hair Restoration",
+    teaser:
+      "Advanced FUE and DHI techniques with natural-looking, lasting results.",
+    icon: "scissors"
+  },
+  {
+    category: "Dental Treatments",
+    teaser:
+      "Smile design, implants, and restorative care with coordinated support.",
+    icon: "smile"
+  },
+  {
+    category: "Plastic & Aesthetic Surgery",
+    teaser:
+      "Personalized cosmetic procedures by certified specialists.",
+    icon: "heart-pulse"
+  },
+  {
+    category: "General & Specialized Surgery",
+    teaser:
+      "Including bariatric and general surgery pathways with multidisciplinary care.",
+    icon: "weight"
+  }
+];
+
+export const LEAD_FORM_TREATMENT_OPTIONS = [
+  ...TREATMENT_HOME_HIGHLIGHTS.map((h) => h.category),
+  "Other"
+] as const;
 
 export interface TreatmentCategory {
   category: string;

@@ -8,11 +8,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "USMD | Premier Health Tourism",
   description:
-    "Premium and secure health tourism platform connecting US patients with trusted medical treatment providers in Turkey.",
+    "Premium and secure health tourism platform connecting US patients with trusted medical treatment providers in Türkiye.",
   keywords: [
     "health tourism",
-    "medical tourism Turkey",
-    "US patients Turkey treatment",
+    "medical tourism Türkiye",
+    "US patients Türkiye treatment",
     "secure medical consultation"
   ],
   applicationName: "USMD",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "USMD | Premier Health Tourism",
     description:
-      "Explore trusted, premium treatment options in Turkey with a secure lead generation experience.",
+      "Explore trusted, premium treatment options in Türkiye with a secure lead generation experience.",
     type: "website",
     locale: "en_US",
     url: "https://usmd.com",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "USMD | Premier Health Tourism",
     description:
-      "Secure, trust-first medical tourism platform for US citizens seeking care in Turkey."
+      "Secure, trust-first medical tourism platform for US citizens seeking care in Türkiye."
   }
 };
 
@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-clean-white text-slate-gray">
+      <body className="bg-clean-white pb-20 text-slate-gray sm:pb-0">
         <Navbar />
         {children}
         <Footer />

@@ -113,7 +113,7 @@ export function WhyTurkeyStats() {
   return (
     <section
       className="border-y border-slate-200/80 bg-gradient-to-b from-slate-50/90 to-white"
-      aria-labelledby="why-turkey-heading"
+      aria-labelledby="why-turkiye-heading"
     >
       <div className="mx-auto w-full max-w-7xl px-4 py-12 md:px-8 md:py-16 lg:px-12 lg:py-20">
         <motion.div
@@ -126,7 +126,7 @@ export function WhyTurkeyStats() {
           className="mb-10 text-center md:mb-12"
         >
           <h2
-            id="why-turkey-heading"
+            id="why-turkiye-heading"
             className="text-2xl font-bold tracking-tight text-trust-green md:text-4xl"
           >
             Why Patients Choose Türkiye for Healthcare

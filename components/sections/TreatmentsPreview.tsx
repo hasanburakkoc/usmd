@@ -2,30 +2,16 @@
 
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
-import { HeartPulse, Scissors, Smile, Weight } from "lucide-react";
+import { HeartPulse, Scissors, Smile, Weight, type LucideIcon } from "lucide-react";
+import type { HomeHighlightIconKey } from "@/lib/constants";
+import { TREATMENT_HOME_HIGHLIGHTS } from "@/lib/constants";
 
-const TREATMENTS = [
-  {
-    title: "Hair Transplant",
-    description: "Advanced FUE and DHI solutions with natural-looking results.",
-    icon: Scissors
-  },
-  {
-    title: "Dental Aesthetics",
-    description: "Smile design, veneers, and implant-supported restorations.",
-    icon: Smile
-  },
-  {
-    title: "Weight Loss Surgery",
-    description: "Comprehensive bariatric pathways with multidisciplinary care.",
-    icon: Weight
-  },
-  {
-    title: "Plastic Surgery",
-    description: "Personalized aesthetic procedures by certified specialists.",
-    icon: HeartPulse
-  }
-] as const;
+const ICON_MAP: Record<HomeHighlightIconKey, LucideIcon> = {
+  scissors: Scissors,
+  smile: Smile,
+  "heart-pulse": HeartPulse,
+  weight: Weight
+};
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -53,17 +39,17 @@ export function TreatmentsPreview() {
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-gray md:text-base">
           Explore core departments designed for patients seeking premium,
-          evidence-based treatment pathways in Turkey.
+          evidence-based treatment pathways in Türkiye.
         </p>
       </motion.div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {TREATMENTS.map((item, index) => {
-          const Icon = item.icon;
+        {TREATMENT_HOME_HIGHLIGHTS.map((item, index) => {
+          const Icon = ICON_MAP[item.icon];
 
           return (
             <motion.article
-              key={item.title}
+              key={item.category}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.2 }}
@@ -75,15 +61,14 @@ export function TreatmentsPreview() {
               variants={reveal}
               className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-medical-teal/30"
             >
-              {/* Soft gradient keeps a premium clinical look without noise. */}
               <div className="rounded-xl bg-gradient-to-br from-trust-green/10 to-medical-teal/10 p-3">
                 <Icon size={22} className="text-trust-green" aria-hidden="true" />
               </div>
               <h3 className="mt-4 text-base font-semibold text-slate-gray">
-                {item.title}
+                {item.category}
               </h3>
               <p className="mt-2 text-sm leading-6 text-slate-gray/90">
-                {item.description}
+                {item.teaser}
               </p>
             </motion.article>
           );

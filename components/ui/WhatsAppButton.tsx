@@ -3,7 +3,7 @@ import Image from "next/image";
 export function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/905327400061"
+      href="https://wa.me/16282643139"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with USMD on WhatsApp"

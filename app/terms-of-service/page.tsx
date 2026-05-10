@@ -170,14 +170,21 @@ export default function TermsOfServicePage() {
             <h2 className="text-lg font-bold text-trust-green md:text-xl">
               9. Contact
             </h2>
-            <p>
-              <a
-                href="mailto:care@usmd.com"
-                className="font-medium text-medical-teal underline-offset-2 hover:underline"
-              >
-                care@usmd.com
-              </a>
-            </p>
+            <address className="not-italic leading-relaxed">
+              <p>1415 Franklin Street 401</p>
+              <p>San Francisco, California 94109</p>
+              <p className="mt-2">+1 628 264 3139</p>
+              <p className="mt-2">
+                <a
+                  href="https://www.instagram.com/usmd.international/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-medical-teal underline-offset-2 hover:underline"
+                >
+                  instagram.com/usmd.international
+                </a>
+              </p>
+            </address>
           </section>
         </div>
       </article>

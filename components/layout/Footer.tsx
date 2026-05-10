@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Instagram } from "lucide-react";
 
 const SITE_MAP = [
   { label: "Home", href: "/" },
@@ -47,14 +48,22 @@ export function Footer() {
           <h4 className="text-sm font-semibold uppercase tracking-wide text-white">
             Contact
           </h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>US: +1 (212) 555-0177</li>
+          <ul className="mt-4 space-y-3 text-sm leading-relaxed">
+            <li className="text-white/85">
+              1415 Franklin Street 401
+              <br />
+              San Francisco, California 94109
+            </li>
+            <li className="text-white/85">+1 628 264 3139</li>
             <li>
               <a
-                href="mailto:care@usmd.com"
-                className="transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+                href="https://www.instagram.com/usmd.international/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               >
-                care@usmd.com
+                <Instagram size={18} className="shrink-0" aria-hidden />
+                <span>@usmd.international</span>
               </a>
             </li>
           </ul>

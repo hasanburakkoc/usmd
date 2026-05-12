@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-import { FieldValue } from "firebase-admin/firestore";
-import { getFirestoreDb } from "@/lib/firebase/admin";
-import type { ConsultationFormStatus } from "@/lib/firestore/consultation-form";
-import { COLLECTION_FORM_SUBMISSIONS } from "@/lib/firestore/collections";
+import { sendConsultationEmail } from "@/lib/resend/send-consultation-email";
 
 export const runtime = "nodejs";
 
@@ -29,7 +26,44 @@ function headerTrim(req: Request, name: string, max: number): string | null {
   return t.length ? t : null;
 }
 
+function parseToList(raw: string | undefined): string[] {
+  if (!raw?.trim()) return [];
+  return raw
+    .split(/[,;\n]+/)
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+const DEFAULT_RESEND_FROM = "USMD <onboarding@resend.dev>";
+
 export async function POST(req: Request) {
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  const from = process.env.RESEND_FROM?.trim() || DEFAULT_RESEND_FROM;
+  const toRaw = process.env.RESEND_TO?.trim();
+
+  if (!apiKey || !toRaw) {
+    console.error("[consultations] Missing RESEND_API_KEY or RESEND_TO");
+    return NextResponse.json(
+      { error: "Form delivery is not configured." },
+      { status: 503 }
+    );
+  }
+
+  let to = parseToList(toRaw);
+  if (to.length === 0 && process.env.NODE_ENV !== "production") {
+    // Resend test inbox — API succeeds; swap RESEND_TO for a real address you read.
+    to = ["delivered@resend.dev"];
+    console.warn(
+      "[consultations] RESEND_TO unset — using delivered@resend.dev (dev only). Set RESEND_TO in .env.local."
+    );
+  }
+  if (to.length === 0) {
+    return NextResponse.json(
+      { error: "Form delivery is not configured." },
+      { status: 503 }
+    );
+  }
+
   let body: unknown;
   try {
     body = await req.json();
@@ -68,23 +102,20 @@ export async function POST(req: Request) {
   );
 
   try {
-    const db = getFirestoreDb();
-    const payload = {
+    const { id } = await sendConsultationEmail({
+      apiKey,
+      from,
+      to,
       fullName,
       email,
       phone,
       treatment,
       message,
-      source: "web" as const,
-      status: "new" as ConsultationFormStatus,
       userAgent,
-      acceptLanguage,
-      createdAt: FieldValue.serverTimestamp()
-    };
+      acceptLanguage
+    });
 
-    const ref = await db.collection(COLLECTION_FORM_SUBMISSIONS).add(payload);
-
-    return NextResponse.json({ ok: true, id: ref.id }, { status: 201 });
+    return NextResponse.json({ ok: true, id }, { status: 201 });
   } catch (e) {
     console.error("[consultations POST]", e);
     return NextResponse.json(

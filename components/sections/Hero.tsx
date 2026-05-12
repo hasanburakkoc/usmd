@@ -39,18 +39,34 @@ function HeroWaveDivider() {
   );
 }
 
+const HERO_IMAGE_MOBILE = "/assets/hero/my-mobile-hero.png";
+const HERO_IMAGE_DESKTOP = "/assets/hero/my-web-hero.png";
+
 export function Hero() {
   return (
     <section className="relative isolate w-full overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/assets/hero/main-image.png"
-          alt=""
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="100vw"
-        />
+        {/* Separate assets so crop/composition can suit phone vs wide screens */}
+        <div className="absolute inset-0 md:hidden">
+          <Image
+            src={HERO_IMAGE_MOBILE}
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+        </div>
+        <div className="absolute inset-0 hidden md:block">
+          <Image
+            src={HERO_IMAGE_DESKTOP}
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+        </div>
       </div>
       {/* Readable copy on any photo */}
       <div

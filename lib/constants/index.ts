@@ -1,6 +1,15 @@
-export const APP_NAME = "USMD";
+export const APP_NAME = "USMD International";
 export const APP_DESCRIPTION =
-  "Premier health tourism platform for US citizens seeking trusted treatment in Türkiye.";
+  "Premier health tourism coordination for US patients seeking trusted treatment in Türkiye.";
+
+export {
+  SITE_NAME,
+  SITE_SHORT_NAME,
+  SITE_URL,
+  SITE_DESCRIPTION,
+  SITE_TAGLINE,
+  SITE_TAGLINE_ALT
+} from "@/lib/constants/site";
 
 export {
   treatmentImageSrcForSlug,

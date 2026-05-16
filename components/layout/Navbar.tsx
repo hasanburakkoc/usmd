@@ -5,13 +5,8 @@ import Image from "next/image";
 import { House, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { NAV_ITEMS } from "@/lib/constants/nav";
 import { cn } from "@/lib/utils";
-
-const NAV_ITEMS = [
-  { label: "All Treatments", href: "/treatments" },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "About", href: "/about" }
-] as const;
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

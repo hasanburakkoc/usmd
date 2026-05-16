@@ -2,40 +2,42 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "USMD | Premier Health Tourism",
-  description:
-    "Premium and secure health tourism platform connecting US patients with trusted medical treatment providers in Türkiye.",
-  keywords: [
-    "health tourism",
-    "medical tourism Türkiye",
-    "US patients Türkiye treatment",
-    "secure medical consultation"
-  ],
-  applicationName: "USMD",
-  metadataBase: new URL("https://usmd.com"),
-  robots: {
-    index: true,
-    follow: true
+  title: {
+    default: `${SITE_NAME} | Medical Tourism for US Patients`,
+    template: `%s | ${SITE_NAME}`
   },
+  description: SITE_DESCRIPTION,
+  keywords: [
+    "medical tourism Turkey",
+    "US patients Turkey healthcare",
+    "dental tourism Turkey",
+    "JCI hospital Turkey",
+    "affordable surgery abroad",
+    "USMD International"
+  ],
+  applicationName: SITE_NAME,
+  metadataBase: new URL(SITE_URL),
+  robots: { index: true, follow: true },
   openGraph: {
-    title: "USMD | Premier Health Tourism",
-    description:
-      "Explore trusted, premium treatment options in Türkiye with a secure lead generation experience.",
+    title: `${SITE_NAME} | Medical Tourism for US Patients`,
+    description: SITE_DESCRIPTION,
     type: "website",
     locale: "en_US",
-    url: "https://usmd.com",
-    siteName: "USMD"
+    url: SITE_URL,
+    siteName: SITE_NAME
   },
   twitter: {
     card: "summary_large_image",
-    title: "USMD | Premier Health Tourism",
-    description:
-      "Secure, trust-first medical tourism platform for US citizens seeking care in Türkiye."
-  }
+    title: `${SITE_NAME} | Medical Tourism for US Patients`,
+    description: SITE_DESCRIPTION
+  },
+  alternates: { canonical: SITE_URL }
 };
 
 export default function RootLayout({
@@ -45,6 +47,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <OrganizationJsonLd />
+      </head>
       <body className="bg-clean-white pb-20 text-slate-gray sm:pb-0">
         <Navbar />
         {children}

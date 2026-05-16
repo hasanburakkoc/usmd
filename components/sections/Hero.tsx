@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
+import { SITE_TAGLINE } from "@/lib/constants/site";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -83,12 +84,12 @@ export function Hero() {
       >
         <div className="max-w-2xl">
           <h1 className="text-3xl font-bold tracking-tight text-white md:text-5xl md:leading-tight">
-            Medical Treatment in Türkiye, Coordinated for US Patients
+            {SITE_TAGLINE}
           </h1>
           <p className="mt-5 max-w-xl text-sm leading-7 text-white/90 md:text-lg md:leading-8">
-            From consultation to airport pickup, hospital appointments, hotel
-            coordination, and follow-up support, we guide you through every
-            step of your health journey.
+            We coordinate hospitals, transfers, hotels, and follow-up in
+            Türkiye—you book your flight. Every quote is personalized with
+            inclusions spelled out so there are no surprise bills.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

@@ -1,15 +1,12 @@
 import Link from "next/link";
 import { Instagram } from "lucide-react";
-
-const SITE_MAP = [
-  { label: "Home", href: "/" },
-  { label: "All Treatments", href: "/treatments" },
-  { label: "About", href: "/about" },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "Treatments on homepage", href: "/#treatments" },
-  { label: "Request consultation", href: "/#consultation" },
-  { label: "Terms of Service", href: "/terms-of-service" }
-] as const;
+import {
+  CONTACT_ADDRESS_LINES,
+  CONTACT_PHONE_DISPLAY,
+  COORDINATION_HOURS,
+  WHATSAPP_SUPPORT_LINE
+} from "@/lib/constants/contact";
+import { FOOTER_SITE_MAP } from "@/lib/constants/nav";
 
 const year = new Date().getFullYear();
 
@@ -30,7 +27,7 @@ export function Footer() {
             Site map
           </h4>
           <ul className="mt-4 columns-1 gap-x-10 sm:columns-2">
-            {SITE_MAP.map((item) => (
+            {FOOTER_SITE_MAP.map((item) => (
               <li key={item.href + item.label} className="mb-2 break-inside-avoid">
                 <Link
                   href={item.href}
@@ -49,11 +46,13 @@ export function Footer() {
           </h4>
           <ul className="mt-4 space-y-3 text-sm leading-relaxed">
             <li className="text-white/85">
-              1415 Franklin Street 401
+              {CONTACT_ADDRESS_LINES[0]}
               <br />
-              San Francisco, California 94109
+              {CONTACT_ADDRESS_LINES[1]}
             </li>
-            <li className="text-white/85">+1 628 264 3139</li>
+            <li className="text-white/85">{CONTACT_PHONE_DISPLAY}</li>
+            <li className="text-white/70">{COORDINATION_HOURS}</li>
+            <li className="text-white/70">{WHATSAPP_SUPPORT_LINE}</li>
             <li>
               <a
                 href="https://www.instagram.com/usmd.international/"

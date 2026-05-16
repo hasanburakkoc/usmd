@@ -1,8 +1,10 @@
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { LeadCTA } from "@/components/sections/LeadCTA";
+import { PatientQuote } from "@/components/sections/PatientQuote";
 import { TreatmentsPreview } from "@/components/sections/TreatmentsPreview";
 import { TrustIndicators } from "@/components/sections/TrustIndicators";
+import { WhatsIncluded } from "@/components/sections/WhatsIncluded";
 import { WhyTurkeyStats } from "@/components/sections/WhyTurkeyStats";
 import {
   listTreatmentCategories,
@@ -23,7 +25,9 @@ export default async function HomePage() {
       <WhyTurkeyStats />
       <TrustIndicators />
       <HowItWorks />
+      <WhatsIncluded />
       <TreatmentsPreview highlights={highlights} />
+      <PatientQuote />
       <LeadCTA treatmentOptions={treatmentOptions} />
     </main>
   );

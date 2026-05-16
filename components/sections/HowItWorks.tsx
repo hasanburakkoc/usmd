@@ -1,32 +1,11 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Plane, ShieldCheck, Stethoscope, Video } from "lucide-react";
-
-const STEPS = [
-  {
-    title: "Free Online Consultation",
-    description: "Video call and medical assessment tailored to your needs.",
-    icon: Video
-  },
-  {
-    title: "Travel & VIP Transfer",
-    description: "Flight coordination and VIP airport greeting on arrival.",
-    icon: Plane
-  },
-  {
-    title: "Premium Treatment",
-    description:
-      "JCI-accredited hospital and a dedicated US-English speaking host.",
-    icon: Stethoscope
-  },
-  {
-    title: "Recovery & Safe Return",
-    description:
-      "Recovery support and a safe trip home—then one year of follow-up calls with the same coordination team.",
-    icon: ShieldCheck
-  }
-] as const;
+import {
+  HOW_IT_WORKS_FOOTNOTE,
+  HOW_IT_WORKS_INTRO,
+  HOW_IT_WORKS_STEPS
+} from "@/lib/constants/how-it-works";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -50,19 +29,20 @@ export function HowItWorks() {
         className="mb-8 md:mb-10"
       >
         <h2 className="text-2xl font-bold tracking-tight text-trust-green md:text-4xl">
-          How It Works
+          {HOW_IT_WORKS_INTRO.title}
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-gray md:text-base">
-          A clear, guided journey designed to keep your treatment process safe,
-          transparent, and stress-free from start to finish.
+          {HOW_IT_WORKS_INTRO.description}
         </p>
       </motion.div>
 
       <div className="relative grid grid-cols-1 gap-4 md:grid-cols-2">
-        {/* Connection line reinforces the guided journey on larger screens. */}
-        <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-slate-200 md:block" />
+        <div
+          className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-slate-200 md:block"
+          aria-hidden
+        />
 
-        {STEPS.map((step, index) => {
+        {HOW_IT_WORKS_STEPS.map((step, index) => {
           const Icon = step.icon;
           const stepNumber = index + 1;
 
@@ -81,7 +61,7 @@ export function HowItWorks() {
               className="relative rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-trust-green/25 md:p-6"
             >
               <div className="flex items-start gap-4">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-medical-teal text-sm font-semibold text-white">
+                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-medical-teal text-sm font-semibold text-white">
                   {stepNumber}
                 </span>
                 <div className="flex-1">
@@ -94,12 +74,19 @@ export function HowItWorks() {
                   <p className="mt-2 text-sm leading-6 text-slate-gray/90">
                     {step.description}
                   </p>
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-gray/90">
+                    {step.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </motion.article>
           );
         })}
       </div>
+
+      <p className="mt-8 text-center text-sm text-slate-gray">{HOW_IT_WORKS_FOOTNOTE}</p>
     </section>
   );
 }

@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { LeadCTA } from "@/components/sections/LeadCTA";
 import { treatmentImageSrcForSlug } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants/site";
+
+export const metadata: Metadata = {
+  title: `Treatments | ${SITE_NAME}`,
+  description:
+    "Explore medical departments and procedures USMD coordinates in Türkiye—personalized quotes with clear inclusions, flights not included.",
+  alternates: { canonical: `${SITE_URL}/treatments` }
+};
 import {
   listTreatmentCategories,
   treatmentNamesForLeadForm

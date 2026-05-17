@@ -20,7 +20,7 @@ export default async function HomePage() {
   const treatmentOptions = treatmentNamesForLeadForm(categories);
 
   return (
-    <main className="min-h-screen">
+    <main className="relative min-h-screen">
       <Hero />
       <WhyTurkeyStats />
       <TrustIndicators />

@@ -45,7 +45,7 @@ const HERO_IMAGE_DESKTOP = "/assets/hero/my-web-hero.png";
 
 export function Hero() {
   return (
-    <section className="relative isolate w-full overflow-hidden">
+    <section className="relative isolate w-full overflow-hidden min-h-[min(100svh,56rem)]">
       <div className="absolute inset-0 z-0">
         {/* Separate assets so crop/composition can suit phone vs wide screens */}
         <div className="absolute inset-0 md:hidden">
@@ -80,7 +80,7 @@ export function Hero() {
         initial="hidden"
         animate="visible"
         variants={containerVariants}
-        className="relative z-10 mx-auto flex min-h-[min(88vh,56rem)] w-full max-w-7xl flex-col justify-center px-4 pb-24 pt-20 md:px-8 md:pb-28 md:pt-24 lg:px-12 lg:pb-32"
+        className="relative z-10 mx-auto flex min-h-[min(100svh,56rem)] w-full max-w-7xl flex-col justify-center px-4 pb-24 pt-28 md:px-8 md:pb-28 md:pt-32 lg:px-12 lg:pb-32"
       >
         <div className="max-w-2xl">
           <h1 className="text-3xl font-bold tracking-tight text-white md:text-5xl md:leading-tight">

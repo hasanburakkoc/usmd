@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
-import { SITE_TAGLINE } from "@/lib/constants/site";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -84,33 +84,35 @@ export function Hero() {
       >
         <div className="max-w-2xl">
           <h1 className="text-3xl font-bold tracking-tight text-white md:text-5xl md:leading-tight">
-            {SITE_TAGLINE}
+            Your health matters.
+            <span className="mt-1 block">
+              It shouldn&apos;t cost you{" "}
+              <span className="text-trust-green">everything.</span>
+            </span>
           </h1>
           <p className="mt-5 max-w-xl text-sm leading-7 text-white/90 md:text-lg md:leading-8">
-            We coordinate hospitals, transfers, hotels, and follow-up in
-            Türkiye—you book your flight. Every quote is personalized with
-            inclusions spelled out so there are no surprise bills.
+            We started USMD International because the American healthcare system
+            was failing people we loved. Too expensive. Too slow. Too
+            exhausting. Turkey — one of the world&apos;s top medical tourism
+            destinations — offers a real alternative. We&apos;re the team that
+            gets you there safely, and brings you home well.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               href="#consultation"
-              className="inline-flex items-center justify-center rounded-full bg-trust-green px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-all hover:bg-trust-green/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 md:text-base"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-trust-green px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-all hover:bg-trust-green/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 md:text-base"
             >
-              Get a Treatment Plan
+              Get started
+              <ArrowUpRight size={18} aria-hidden className="shrink-0" />
             </Link>
             <Link
               href="/treatments"
               className="inline-flex items-center justify-center rounded-full border border-white bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 md:text-base"
             >
-              Explore Treatments
+              Talk to a coordinator
             </Link>
           </div>
-
-          <p className="mt-8 max-w-xl text-xs text-white/80 md:text-sm">
-            Dedicated coordinators supporting your full treatment trip in
-            Türkiye.
-          </p>
         </div>
       </motion.div>
 

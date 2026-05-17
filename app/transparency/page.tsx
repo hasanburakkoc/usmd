@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Check, X } from "lucide-react";
 import {
   PACKAGE_INCLUSION_ROWS,
   TRANSPARENCY_DISCLAIMER,
   US_TR_COMPARISON_ROWS
 } from "@/lib/constants/transparency";
+import {
+  WHATS_INCLUDED_FOOTNOTE,
+  WHATS_INCLUDED_HEADING,
+  WHATS_INCLUDED_ITEMS,
+  WHATS_INCLUDED_SUBHEAD
+} from "@/lib/constants/whats-included";
 import { SITE_NAME, SITE_URL } from "@/lib/constants/site";
 
 export const metadata: Metadata = {
@@ -36,7 +43,46 @@ export default function TransparencyPage() {
           are not surprised later.
         </p>
 
-        <h2 className="mt-10 text-xl font-semibold text-trust-green">
+        <h2 className="mt-10 text-xl font-semibold text-trust-green md:text-2xl">
+          {WHATS_INCLUDED_HEADING}
+        </h2>
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-gray md:text-base">
+          {WHATS_INCLUDED_SUBHEAD}
+        </p>
+        <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {WHATS_INCLUDED_ITEMS.map((item) => (
+            <li
+              key={item.label}
+              className="flex items-start gap-3 rounded-xl border border-slate-200 bg-clean-white px-4 py-3"
+            >
+              <span
+                className={
+                  item.included
+                    ? "mt-0.5 rounded-full bg-trust-green/10 p-1 text-trust-green"
+                    : "mt-0.5 rounded-full bg-slate-100 p-1 text-slate-400"
+                }
+                aria-hidden
+              >
+                {item.included ? <Check size={16} /> : <X size={16} />}
+              </span>
+              <span
+                className={
+                  item.included
+                    ? "text-sm text-slate-gray"
+                    : "text-sm text-slate-gray/80"
+                }
+              >
+                {item.label}
+                {!item.included ? (
+                  <span className="ml-1 text-xs text-slate-500">(you arrange)</span>
+                ) : null}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 text-sm text-slate-gray">{WHATS_INCLUDED_FOOTNOTE}</p>
+
+        <h2 className="mt-12 text-xl font-semibold text-trust-green">
           Package inclusion template
         </h2>
         <div className="mt-4 w-full overflow-x-auto">

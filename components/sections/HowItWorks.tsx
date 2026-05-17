@@ -1,11 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import {
-  HOW_IT_WORKS_FOOTNOTE,
-  HOW_IT_WORKS_INTRO,
-  HOW_IT_WORKS_STEPS
-} from "@/lib/constants/how-it-works";
+import { HOW_IT_WORKS_INTRO, HOW_IT_WORKS_STEPS } from "@/lib/constants/how-it-works";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -85,8 +81,6 @@ export function HowItWorks() {
           );
         })}
       </div>
-
-      <p className="mt-8 text-center text-sm text-slate-gray">{HOW_IT_WORKS_FOOTNOTE}</p>
     </section>
   );
 }

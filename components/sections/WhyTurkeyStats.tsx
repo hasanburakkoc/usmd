@@ -3,6 +3,7 @@
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
 import { US_HEALTHCARE_STAT_CARDS } from "@/lib/constants/stats-sources";
+import { TURKEY_FACT_PILLARS } from "@/lib/constants/turkey-fact-pillars";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -84,6 +85,45 @@ function SurveyBlock() {
   );
 }
 
+function TurkeyFactPillars() {
+  return (
+    <div className="mt-12 md:mt-16">
+      <p className="text-center text-xs font-semibold uppercase tracking-[0.28em] text-medical-teal">
+        Why Turkey — The Facts
+      </p>
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {TURKEY_FACT_PILLARS.map((pillar, index) => {
+          const Icon = pillar.icon;
+          return (
+            <motion.article
+              key={pillar.id}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.45, delay: index * 0.05, ease: EASE }}
+              variants={reveal}
+              className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-soft md:p-6"
+            >
+              <div className="inline-flex rounded-xl bg-trust-green/10 p-2.5 text-trust-green">
+                <Icon size={22} aria-hidden />
+              </div>
+              <h3 className="mt-4 text-base font-semibold text-slate-800 md:text-lg">
+                {pillar.title}
+              </h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-gray">
+                {pillar.description}
+              </p>
+              <p className="mt-4 text-xs font-medium text-trust-green">
+                {pillar.source}
+              </p>
+            </motion.article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function WhyTurkeyStats() {
   const headingRef = useRef<HTMLDivElement>(null);
   const lineInView = useInView(headingRef, { once: true, amount: 0.5 });
@@ -133,6 +173,8 @@ export function WhyTurkeyStats() {
         </motion.div>
 
         <SurveyBlock />
+
+        <TurkeyFactPillars />
 
         <motion.p
           initial="hidden"

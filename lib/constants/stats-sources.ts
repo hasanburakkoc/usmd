@@ -19,6 +19,41 @@ export const SOURCED_STATS: readonly SourcedStat[] = [
   }
 ] as const;
 
+export type UsHealthcareStatCard = {
+  id: string;
+  stat: string;
+  description: string;
+  source: string;
+};
+
+/** Shown in WhyTurkeyStats green box on the home page. */
+export const US_HEALTHCARE_STAT_CARDS: readonly UsHealthcareStatCard[] = [
+  {
+    id: "gallup-sacrifices",
+    stat: "82M",
+    description: "Americans made sacrifices to afford healthcare",
+    source: "Gallup/West Health 2025"
+  },
+  {
+    id: "kff-skipped",
+    stat: "36%",
+    description: "Skipped or postponed needed care due to cost",
+    source: "KFF Health Tracking Poll 2025"
+  },
+  {
+    id: "oecd-gdp",
+    stat: "17.3%",
+    description: "Of US GDP spent on healthcare — highest in the world",
+    source: "OECD 2024"
+  },
+  {
+    id: "kff-insured",
+    stat: "37%",
+    description: "Of insured Americans still can't afford the care they need",
+    source: "KFF 2025"
+  }
+] as const;
+
 export const TURKEY_TRUST_FACTS = [
   {
     label: "JCI-accredited hospitals",

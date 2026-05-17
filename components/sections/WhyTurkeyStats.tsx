@@ -1,7 +1,8 @@
 "use client";
 
-import { animate, motion, useInView, type Variants } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useInView, type Variants } from "framer-motion";
+import { useRef } from "react";
+import { US_HEALTHCARE_STAT_CARDS } from "@/lib/constants/stats-sources";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -9,58 +10,6 @@ const reveal: Variants = {
   hidden: { opacity: 0, y: 18 },
   show: { opacity: 1, y: 0 }
 };
-
-const SURVEY_METRICS = [
-  { label: "Would choose Türkiye again", value: 77.2, suffix: "%" },
-  { label: "Would recommend Türkiye", value: 75.4, suffix: "%" },
-  { label: "Had prior treatment visit", value: 63.2, suffix: "%" }
-] as const;
-
-function SurveyMetricPill({
-  metric,
-  index,
-  inView
-}: {
-  metric: (typeof SURVEY_METRICS)[number];
-  index: number;
-  inView: boolean;
-}) {
-  const [display, setDisplay] = useState("0.0");
-
-  useEffect(() => {
-    if (!inView) return;
-    const ctrl = animate(0, metric.value, {
-      duration: 1.1,
-      delay: 0.2 + index * 0.12,
-      ease: EASE,
-      onUpdate: (v) => setDisplay(v.toFixed(1))
-    });
-    return () => ctrl.stop();
-  }, [inView, metric.value, index]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{
-        duration: 0.45,
-        delay: 0.15 + index * 0.08,
-        ease: EASE
-      }}
-      className="flex flex-col items-center px-2 text-center md:px-6 lg:px-10"
-    >
-      <p className="text-4xl font-semibold tabular-nums tracking-tight text-white md:text-[2.625rem] md:leading-none lg:text-5xl">
-        {display}
-        <span className="ml-0.5 align-top text-2xl font-semibold md:text-3xl lg:text-4xl">
-          {metric.suffix}
-        </span>
-      </p>
-      <p className="mx-auto mt-3 max-w-[15rem] text-xs font-medium leading-relaxed text-emerald-50/95 md:max-w-none md:text-sm">
-        {metric.label}
-      </p>
-    </motion.div>
-  );
-}
 
 function SurveyBlock() {
   const ref = useRef<HTMLDivElement>(null);
@@ -74,7 +23,7 @@ function SurveyBlock() {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: 0.08, ease: EASE }}
       variants={reveal}
-      className="mx-auto mt-6 max-w-5xl md:mt-8"
+      className="mx-auto mt-6 max-w-6xl md:mt-8"
     >
       <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-medical-teal via-trust-green to-emerald-800 px-6 py-9 text-center shadow-[0_8px_40px_-12px_rgba(5,150,105,0.45)] ring-1 ring-white/10 md:px-12 md:py-11">
         <motion.p
@@ -83,22 +32,51 @@ function SurveyBlock() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, ease: EASE }}
         >
-          Survey-based research
+          The reality for US patients
         </motion.p>
         <div
           className="mx-auto mt-4 h-px w-14 bg-gradient-to-r from-transparent via-white/45 to-transparent"
           aria-hidden
         />
-        <p className="mx-auto mt-5 max-w-2xl font-light leading-relaxed text-white/90 md:mt-6 md:max-w-2xl md:text-[0.9375rem] md:leading-8">
-          In a 2025 patient satisfaction study, surveyed medical travelers
-          reported strong willingness to return and to recommend Türkiye. The
-          figures below are from that study only—not a national or universal
-          patient sample.
+        <p className="mx-auto mt-5 max-w-3xl font-light leading-relaxed text-white/90 md:mt-6 md:text-[0.9375rem] md:leading-8">
+          <strong className="font-semibold text-white">1 in 3</strong> Americans
+          skipped or postponed medical care in the past year because of cost —
+          that&apos;s over{" "}
+          <strong className="font-semibold text-white">82 million</strong> people
+          making daily trade-offs just to afford healthcare. Nearly half of
+          insured adults (
+          <strong className="font-semibold text-white">41%</strong>) skipped
+          appointments in 2025.{" "}
+          <strong className="font-semibold text-white">35%</strong> of adults said
+          they couldn&apos;t afford care if they needed it today.{" "}
+          <span className="font-semibold text-emerald-50">
+            You are not alone, and you don&apos;t have to keep waiting.
+          </span>
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-12 border-t border-white/20 pt-10 sm:mt-12 sm:gap-10 md:mt-12 md:grid-cols-3 md:gap-0 md:divide-x md:divide-white/25 md:border-t-0 md:pt-0">
-          {SURVEY_METRICS.map((m, i) => (
-            <SurveyMetricPill key={m.label} metric={m} index={i} inView={inView} />
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-12 lg:grid-cols-4">
+          {US_HEALTHCARE_STAT_CARDS.map((card, index) => (
+            <motion.article
+              key={card.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.45,
+                delay: 0.15 + index * 0.08,
+                ease: EASE
+              }}
+              className="flex flex-col items-center rounded-2xl bg-stone-50/95 px-4 py-6 text-center"
+            >
+              <p className="text-3xl font-bold tabular-nums tracking-tight text-trust-green md:text-4xl">
+                {card.stat}
+              </p>
+              <p className="mt-3 text-sm font-medium leading-snug text-slate-gray md:text-base">
+                {card.description}
+              </p>
+              <p className="mt-3 text-[0.65rem] leading-relaxed text-slate-500 md:text-xs">
+                {card.source}
+              </p>
+            </motion.article>
           ))}
         </div>
       </div>

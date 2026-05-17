@@ -22,11 +22,11 @@ export default async function HomePage() {
   return (
     <main className="relative min-h-screen">
       <Hero />
+      <TreatmentsPreview highlights={highlights} />
       <WhyTurkeyStats />
       <TrustIndicators />
       <HowItWorks />
       <WhatsIncluded />
-      <TreatmentsPreview highlights={highlights} />
       <PatientQuote />
       <LeadCTA treatmentOptions={treatmentOptions} />
     </main>

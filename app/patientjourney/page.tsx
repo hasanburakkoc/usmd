@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, X } from "lucide-react";
+import { PatientJourneyNav } from "@/components/sections/PatientJourneyNav";
+import { PatientJourneySectionBridge } from "@/components/sections/PatientJourneySectionBridge";
 import { PatientJourneySteps } from "@/components/sections/PatientJourneySteps";
 import { PATIENT_JOURNEY_GUIDE_BULLETS } from "@/lib/constants/patient-journey";
 import {
@@ -31,7 +33,7 @@ function inclusionLabel(typical: "included" | "discussed" | "patient") {
 
 export default function PatientJourneyPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-gradient-to-b from-clean-white via-white to-slate-50/40">
       <div className="mx-auto w-full max-w-7xl px-4 py-10 md:px-8 md:py-14 lg:px-12 lg:py-16">
         <article className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft md:p-10 lg:p-12">
           <p className="text-xs font-semibold uppercase tracking-wide text-medical-teal">
@@ -45,16 +47,29 @@ export default function PatientJourneyPage() {
             happens at each step, what is typically included, and how planning
             works before you fly.
           </p>
+          <PatientJourneyNav />
         </article>
       </div>
 
-      <PatientJourneySteps showFootnote={false} />
+      <PatientJourneySectionBridge
+        part="Part 1"
+        title="How your care is coordinated, step by step"
+        description="Follow the four phases below from consultation through follow-up at home—the same path every coordinated patient travels with USMD."
+      />
+
+      <PatientJourneySteps showFootnote />
+
+      <PatientJourneySectionBridge
+        part="Part 2"
+        title="What your quote typically covers"
+        description="The timeline above is delivered through clear, written inclusions. Review what we coordinate versus what you arrange—so nothing feels hidden before you commit."
+      />
 
       <section
         className="mx-auto w-full max-w-7xl px-4 pb-12 md:px-8 md:pb-16 lg:px-12"
         aria-labelledby="whats-included-heading"
       >
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft md:p-10">
+        <div className="rounded-3xl border border-slate-200 border-t-4 border-t-trust-green/40 bg-white p-6 shadow-soft md:p-10">
           <h2
             id="whats-included-heading"
             className="text-2xl font-bold tracking-tight text-trust-green md:text-3xl"
@@ -169,11 +184,17 @@ export default function PatientJourneyPage() {
         </div>
       </section>
 
+      <PatientJourneySectionBridge
+        part="Part 3"
+        title="Questions to clarify before you fly"
+        description="Use this checklist alongside Parts 1 and 2—then request a quote when you are ready to take the next step."
+      />
+
       <section
         className="mx-auto w-full max-w-7xl px-4 pb-16 md:px-8 md:pb-20 lg:px-12"
         aria-labelledby="planning-essentials-heading"
       >
-        <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-trust-green/[0.06] to-white p-6 shadow-soft md:p-10">
+        <div className="rounded-3xl border border-slate-200 border-t-4 border-t-medical-teal/40 bg-gradient-to-br from-trust-green/[0.06] to-white p-6 shadow-soft md:p-10">
           <h2
             id="planning-essentials-heading"
             className="text-xl font-semibold text-trust-green md:text-2xl"

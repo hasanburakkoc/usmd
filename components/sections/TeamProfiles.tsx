@@ -10,7 +10,7 @@ export function TeamProfiles() {
         Your coordination team
       </h2>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-gray md:text-base">
-        USMD is a bilingual, bicultural operation built for Americans traveling
+        USMD is a bilingual, bicultural operation built for international patients traveling
         to Türkiye—not a solo broker or anonymous call center.
       </p>
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">

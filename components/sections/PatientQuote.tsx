@@ -11,9 +11,8 @@ const reveal: Variants = {
 /** Placeholder until client provides signed video/text testimonials. */
 const PLACEHOLDER_QUOTE = {
   quote:
-    "I was nervous about going abroad for care—but having one coordinator in US English, a clear airport pickup, and follow-up calls after I got home made it feel manageable.",
-  attribution: "US patient, coordinated care in Türkiye",
-  note: "Representative experience; individual results vary."
+    "I was nervous about going abroad for care—but having one coordinator in clear English, a clear airport pickup, and follow-up calls after I got home made it feel manageable.",
+  attribution: "International patient, coordinated care in Türkiye"
 };
 
 export function PatientQuote() {
@@ -36,7 +35,6 @@ export function PatientQuote() {
         <footer className="mt-4 text-sm font-semibold text-trust-green">
           — {PLACEHOLDER_QUOTE.attribution}
         </footer>
-        <p className="mt-2 text-xs text-slate-500">{PLACEHOLDER_QUOTE.note}</p>
       </motion.blockquote>
     </section>
   );

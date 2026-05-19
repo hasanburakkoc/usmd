@@ -1,7 +1,11 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { HOW_IT_WORKS_INTRO, HOW_IT_WORKS_STEPS } from "@/lib/constants/how-it-works";
+import {
+  PATIENT_JOURNEY_FOOTNOTE,
+  PATIENT_JOURNEY_INTRO,
+  PATIENT_JOURNEY_STEPS
+} from "@/lib/constants/patient-journey";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -10,10 +14,14 @@ const reveal: Variants = {
   show: { opacity: 1, y: 0 }
 };
 
-export function HowItWorks() {
+type Props = {
+  showFootnote?: boolean;
+};
+
+export function PatientJourneySteps({ showFootnote = true }: Props) {
   return (
     <section
-      id="how-it-works"
+      id="patient-journey-steps"
       className="mx-auto w-full max-w-7xl px-4 py-12 md:px-8 md:py-16 lg:px-12 lg:py-20"
     >
       <motion.div
@@ -25,20 +33,27 @@ export function HowItWorks() {
         className="mb-8 md:mb-10"
       >
         <h2 className="text-2xl font-bold tracking-tight text-trust-green md:text-4xl">
-          {HOW_IT_WORKS_INTRO.title}
+          {PATIENT_JOURNEY_INTRO.title}
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-gray md:text-base">
-          {HOW_IT_WORKS_INTRO.description}
+          {PATIENT_JOURNEY_INTRO.description}
         </p>
       </motion.div>
 
-      <div className="relative grid grid-cols-1 gap-4 md:grid-cols-2">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: EASE }}
+        variants={reveal}
+        className="relative grid grid-cols-1 gap-4 md:grid-cols-2"
+      >
         <div
           className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-slate-200 md:block"
           aria-hidden
         />
 
-        {HOW_IT_WORKS_STEPS.map((step, index) => {
+        {PATIENT_JOURNEY_STEPS.map((step, index) => {
           const Icon = step.icon;
           const stepNumber = index + 1;
 
@@ -80,7 +95,13 @@ export function HowItWorks() {
             </motion.article>
           );
         })}
-      </div>
+      </motion.div>
+
+      {showFootnote ? (
+        <p className="mt-8 text-center text-sm text-slate-gray">
+          {PATIENT_JOURNEY_FOOTNOTE}
+        </p>
+      ) : null}
     </section>
   );
 }

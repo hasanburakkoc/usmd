@@ -8,7 +8,7 @@ export function OrganizationJsonLd() {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      "Medical tourism coordination for US patients seeking treatment in Türkiye.",
+      "Medical tourism coordination for international patients seeking treatment in Türkiye.",
     telephone: CONTACT_PHONE_TEL,
     address: {
       "@type": "PostalAddress",
@@ -18,7 +18,7 @@ export function OrganizationJsonLd() {
       postalCode: "94109",
       addressCountry: "US"
     },
-    areaServed: { "@type": "Country", name: "United States" }
+    areaServed: { "@type": "Place", name: "Worldwide" }
   };
 
   return (

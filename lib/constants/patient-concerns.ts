@@ -9,13 +9,13 @@ export const PATIENT_CONCERNS: readonly PatientConcern[] = [
     id: "safety",
     question: "Is it actually safe?",
     answer:
-      "We only place patients in JCI-accredited hospitals meeting the exact same safety standards required in the US and Europe. Accreditation is verified — not assumed."
+      "We only place patients in JCI-accredited hospitals meeting internationally recognized safety standards. Accreditation is verified — not assumed."
   },
   {
     id: "communication",
     question: "What if I can't communicate?",
     answer:
-      "Your coordinator speaks fluent American English and is with you from the airport to your last appointment. You'll never be left to figure it out alone."
+      "Your coordinator speaks fluent English and is with you from the airport to your last appointment. You'll never be left to figure it out alone."
   },
   {
     id: "complications",
@@ -27,6 +27,6 @@ export const PATIENT_CONCERNS: readonly PatientConcern[] = [
     id: "qualifications",
     question: "Are the doctors actually qualified?",
     answer:
-      "Many Turkish surgeons trained in Europe and the US. In specialties like hair restoration and cosmetic surgery, they perform higher volumes than most US counterparts."
+      "Many Turkish surgeons trained in Europe and internationally. In specialties like hair restoration and cosmetic surgery, they perform high volumes with deep experience."
   }
 ] as const;

@@ -24,6 +24,22 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   output: "standalone",
   outputFileTracingRoot: root,
+  async redirects() {
+    return [
+      { source: "/guides", destination: "/patientjourney", permanent: true },
+      {
+        source: "/guides/:slug",
+        destination: "/patientjourney",
+        permanent: true
+      },
+      {
+        source: "/transparency",
+        destination: "/patientjourney",
+        permanent: true
+      },
+      { source: "/safety", destination: "/patientjourney", permanent: true }
+    ];
+  },
   async headers() {
     return [
       {

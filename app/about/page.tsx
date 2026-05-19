@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { HowItWorks } from "@/components/sections/HowItWorks";
 import { TeamProfiles } from "@/components/sections/TeamProfiles";
 import { TurkeyTrustFacts } from "@/components/sections/TurkeyTrustFacts";
-import { WhatsIncluded } from "@/components/sections/WhatsIncluded";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/constants/site";
 
 export const metadata: Metadata = {
   title: `About Us | ${SITE_NAME}`,
   description:
-    "USMD International connects Americans to coordinated care in Türkiye—hospitals, transfers, hotels, and follow-up. You book your flight.",
+    "USMD International connects patients worldwide to coordinated care in Türkiye—hospitals, transfers, hotels, and follow-up. You book your flight.",
   alternates: { canonical: `${SITE_URL}/about` }
 };
 
@@ -27,10 +25,11 @@ export default function AboutPage() {
 
           <div className="mt-8 max-w-3xl space-y-5 text-sm leading-relaxed text-slate-gray md:text-base md:leading-8">
             <p>
-              Americans pay too much and wait too long for healthcare. Türkiye has
-              become one of the world&apos;s leading destinations for medical and
-              dental procedures—internationally accredited hospitals, experienced
-              specialists, and coordinated care at a fraction of US complexity.
+              Too many people pay too much and wait too long for healthcare at
+              home. Türkiye has become one of the world&apos;s leading destinations
+              for medical and dental procedures—internationally accredited
+              hospitals, experienced specialists, and coordinated care without
+              the usual complexity.
             </p>
             <p>
               <strong className="font-semibold text-slate-800">
@@ -59,17 +58,14 @@ export default function AboutPage() {
               Request a consultation
             </Link>
             <Link
-              href="/guides"
+              href="/patientjourney"
               className="inline-flex rounded-full border border-trust-green px-6 py-3 text-sm font-semibold text-trust-green hover:bg-trust-green/5"
             >
-              Read our guides
+              Explore your patient journey
             </Link>
           </div>
         </article>
       </div>
-
-      <WhatsIncluded />
-      <HowItWorks />
     </main>
   );
 }

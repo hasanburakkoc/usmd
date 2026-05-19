@@ -4,7 +4,7 @@ export const WHATS_INCLUDED_SUBHEAD =
 
 export const WHATS_INCLUDED_ITEMS = [
   {
-    label: "Dedicated US-English coordinator",
+    label: "Dedicated English-speaking coordinator",
     included: true
   },
   {

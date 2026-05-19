@@ -31,7 +31,7 @@ export const US_HEALTHCARE_STAT_CARDS: readonly UsHealthcareStatCard[] = [
   {
     id: "gallup-sacrifices",
     stat: "82M",
-    description: "Americans made sacrifices to afford healthcare",
+    description: "People made sacrifices to afford healthcare",
     source: "Gallup/West Health 2025"
   },
   {
@@ -49,7 +49,7 @@ export const US_HEALTHCARE_STAT_CARDS: readonly UsHealthcareStatCard[] = [
   {
     id: "kff-insured",
     stat: "37%",
-    description: "Of insured Americans still can't afford the care they need",
+    description: "Of insured people still can't afford the care they need",
     source: "KFF 2025"
   }
 ] as const;
@@ -58,7 +58,7 @@ export const TURKEY_TRUST_FACTS = [
   {
     label: "JCI-accredited hospitals",
     detail:
-      "Türkiye hosts dozens of Joint Commission International (JCI) accredited hospitals—an international benchmark many US patients recognize."
+      "Türkiye hosts dozens of Joint Commission International (JCI) accredited hospitals—an international benchmark many patients recognize worldwide."
   },
   {
     label: "International patient volume",

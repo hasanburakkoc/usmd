@@ -6,9 +6,9 @@ export type TeamMember = {
 
 export const TEAM_PLACEHOLDERS: readonly TeamMember[] = [
   {
-    role: "Founder & US Patient Advocacy",
+    role: "Founder & Patient Advocacy",
     name: "Leadership (profile coming soon)",
-    bio: "Bridges American expectations with ethical, transparent medical travel—focused on continuity from first call to follow-up at home."
+    bio: "Bridges patient expectations with ethical, transparent medical travel—focused on continuity from first call to follow-up at home."
   },
   {
     role: "Clinical Partnerships, Türkiye",
@@ -16,9 +16,9 @@ export const TEAM_PLACEHOLDERS: readonly TeamMember[] = [
     bio: "Maintains relationships with accredited hospitals and specialists across dental, aesthetic, surgical, and restorative care."
   },
   {
-    role: "US Patient Coordination",
+    role: "Patient Coordination",
     name: "Coordination team (profile coming soon)",
-    bio: "Schedules consultations, quotes, and travel windows in US English—your single point of contact before and during your trip."
+    bio: "Schedules consultations, quotes, and travel windows in clear English—your single point of contact before and during your trip."
   },
   {
     role: "Logistics & On-Ground Support",

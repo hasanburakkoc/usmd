@@ -1,26 +1,26 @@
 import type { LucideIcon } from "lucide-react";
 import { Plane, ShieldCheck, Stethoscope, Video } from "lucide-react";
 
-export type HowItWorksStep = {
+export type PatientJourneyStep = {
   title: string;
   description: string;
   bullets: readonly string[];
   icon: LucideIcon;
 };
 
-export const HOW_IT_WORKS_INTRO = {
-  title: "How It Works",
+export const PATIENT_JOURNEY_INTRO = {
+  title: "Your Patient Journey",
   description:
-    "A clear, guided journey designed to keep your treatment process safe, transparent, and stress-free—from your first video call through follow-up at home."
+    "A clear, guided path designed to keep your treatment process safe, transparent, and stress-free—from your first video call through follow-up at home."
 } as const;
 
-export const HOW_IT_WORKS_STEPS: readonly HowItWorksStep[] = [
+export const PATIENT_JOURNEY_STEPS: readonly PatientJourneyStep[] = [
   {
     title: "Free Online Consultation",
     description:
       "Share your goals and medical history. We help you understand realistic options—no pressure.",
     bullets: [
-      "Video or phone consultation in US English",
+      "Video or phone consultation in clear English",
       "Medical assessment aligned with partner hospitals",
       "Personalized, itemized quote after clinical review"
     ],
@@ -40,7 +40,7 @@ export const HOW_IT_WORKS_STEPS: readonly HowItWorksStep[] = [
   {
     title: "Premium Treatment",
     description:
-      "Care at vetted, internationally accredited facilities with a US-English speaking host.",
+      "Care at vetted, internationally accredited facilities with an English-speaking host.",
     bullets: [
       "JCI-accredited hospital partners where applicable",
       "Pre-admission and discharge coordination",
@@ -61,5 +61,14 @@ export const HOW_IT_WORKS_STEPS: readonly HowItWorksStep[] = [
   }
 ] as const;
 
-export const HOW_IT_WORKS_FOOTNOTE =
+export const PATIENT_JOURNEY_FOOTNOTE =
   "Questions only? That is fine. We are here to help you decide if medical travel is right for you.";
+
+/** Condensed planning topics (formerly full Guides section). */
+export const PATIENT_JOURNEY_GUIDE_BULLETS = [
+  "JCI-accredited hospitals and coordinated travel—what international patients should know before deciding",
+  "Recovery in Türkiye and up to one year of follow-up coordination after you return home",
+  "Insurance and self-pay abroad—confirm coverage with your insurer; we do not sell insurance",
+  "Custom quotes after medical review with inclusions spelled out—no surprise billing",
+  "Airport meet-and-greet, transfers, and a dedicated coordinator reachable before you land"
+] as const;

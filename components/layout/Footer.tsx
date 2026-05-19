@@ -17,8 +17,8 @@ export function Footer() {
         <div className="lg:col-span-4">
           <h3 className="text-xl font-bold text-white">USMD</h3>
           <p className="mt-3 text-sm leading-6">
-            Premium medical tourism coordination for US patients seeking trusted
-            treatment pathways in Türkiye.
+            Premium medical tourism coordination for international patients
+            seeking trusted treatment pathways in Türkiye.
           </p>
         </div>
 

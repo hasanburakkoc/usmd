@@ -1,5 +1,4 @@
 import { Hero } from "@/components/sections/Hero";
-import { HowItWorks } from "@/components/sections/HowItWorks";
 import { LeadCTA } from "@/components/sections/LeadCTA";
 import { PatientConcerns } from "@/components/sections/PatientConcerns";
 import { PatientQuote } from "@/components/sections/PatientQuote";
@@ -25,7 +24,6 @@ export default async function HomePage() {
       <TreatmentsPreview highlights={highlights} />
       <WhyTurkeyStats />
       <TrustIndicators />
-      <HowItWorks />
       <PatientConcerns />
       <PatientQuote />
       <LeadCTA treatmentOptions={treatmentOptions} />

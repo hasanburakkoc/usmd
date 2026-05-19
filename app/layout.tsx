@@ -9,13 +9,13 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_NAME} | Medical Tourism for US Patients`,
+    default: `${SITE_NAME} | International Medical Tourism`,
     template: `%s | ${SITE_NAME}`
   },
   description: SITE_DESCRIPTION,
   keywords: [
     "medical tourism Turkey",
-    "US patients Turkey healthcare",
+    "international medical tourism Turkey",
     "dental tourism Turkey",
     "JCI hospital Turkey",
     "affordable surgery abroad",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   robots: { index: true, follow: true },
   openGraph: {
-    title: `${SITE_NAME} | Medical Tourism for US Patients`,
+    title: `${SITE_NAME} | International Medical Tourism`,
     description: SITE_DESCRIPTION,
     type: "website",
     locale: "en_US",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Medical Tourism for US Patients`,
+    title: `${SITE_NAME} | International Medical Tourism`,
     description: SITE_DESCRIPTION
   },
   alternates: { canonical: SITE_URL }

@@ -33,19 +33,19 @@ function SurveyBlock() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, ease: EASE }}
         >
-          The reality for US patients
+          The reality for many patients at home
         </motion.p>
         <div
           className="mx-auto mt-4 h-px w-14 bg-gradient-to-r from-transparent via-white/45 to-transparent"
           aria-hidden
         />
         <p className="mx-auto mt-5 max-w-3xl font-light leading-relaxed text-white/90 md:mt-6 md:text-[0.9375rem] md:leading-8">
-          <strong className="font-semibold text-white">1 in 3</strong> Americans
-          skipped or postponed medical care in the past year because of cost —
-          that&apos;s over{" "}
-          <strong className="font-semibold text-white">82 million</strong> people
+          <strong className="font-semibold text-white">1 in 3</strong> people in
+          the U.S. skipped or postponed medical care in the past year because of
+          cost—that&apos;s over{" "}
+          <strong className="font-semibold text-white">82 million</strong>{" "}
           making daily trade-offs just to afford healthcare. Nearly half of
-          insured adults (
+          insured adults there (
           <strong className="font-semibold text-white">41%</strong>) skipped
           appointments in 2025.{" "}
           <strong className="font-semibold text-white">35%</strong> of adults said

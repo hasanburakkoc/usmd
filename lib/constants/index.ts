@@ -1,6 +1,6 @@
 export const APP_NAME = "USMD International";
 export const APP_DESCRIPTION =
-  "Premier health tourism coordination for US patients seeking trusted treatment in Türkiye.";
+  "Premier health tourism coordination for international patients seeking trusted treatment in Türkiye.";
 
 export {
   SITE_NAME,

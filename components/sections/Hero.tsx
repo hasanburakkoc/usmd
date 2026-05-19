@@ -91,11 +91,8 @@ export function Hero() {
             </span>
           </h1>
           <p className="mt-5 max-w-xl text-sm leading-7 text-white/90 md:text-lg md:leading-8">
-            We started USMD International because the American healthcare system
-            was failing people we loved. Too expensive. Too slow. Too
-            exhausting. Turkey — one of the world&apos;s top medical tourism
-            destinations — offers a real alternative. We&apos;re the team that
-            gets you there safely, and brings you home well.
+            World-class accredited hospitals, expert physicians, and a
+            seamlessly planned medical journey you can trust.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">

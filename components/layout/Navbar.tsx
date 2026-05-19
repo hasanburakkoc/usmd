@@ -50,10 +50,10 @@ export function Navbar() {
             <Image
               src="/lal-altin-logo.png"
               alt="Lal Altın logo"
-              width={280}
-              height={88}
+              width={322}
+              height={101}
               priority
-              className={cn("h-10 w-auto", isHome && "brightness-0 invert")}
+              className={cn("h-[46px] w-auto", isHome && "brightness-0 invert")}
             />
           </Link>
 
@@ -105,11 +105,11 @@ export function Navbar() {
             <Image
               src="/lal-altin-logo.png"
               alt="Lal Altın logo"
-              width={280}
-              height={88}
+              width={322}
+              height={101}
               priority
               className={cn(
-                "h-11 w-auto sm:h-12",
+                "h-[50.6px] w-auto sm:h-[55.2px]",
                 isHome && "brightness-0 invert"
               )}
             />

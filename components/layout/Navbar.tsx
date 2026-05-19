@@ -48,13 +48,13 @@ export function Navbar() {
             aria-label="USMD home"
           >
             <Image
-              src="/yenilogo.png"
+              src="/yenilogo2.png"
               alt="Lal Altın logo"
-              width={3500}
-              height={3500}
+              width={3093}
+              height={1227}
               priority
               className={cn(
-                "h-[46px] w-auto",
+                "h-[59.8px] w-auto",
                 isHome ? "brightness-0 invert" : "brightness-0"
               )}
             />
@@ -106,13 +106,13 @@ export function Navbar() {
             aria-label="USMD home"
           >
             <Image
-              src="/yenilogo.png"
+              src="/yenilogo2.png"
               alt="Lal Altın logo"
-              width={3500}
-              height={3500}
+              width={3093}
+              height={1227}
               priority
               className={cn(
-                "h-[50.6px] w-auto sm:h-[55.2px]",
+                "h-[65.8px] w-auto sm:h-[71.8px]",
                 isHome ? "brightness-0 invert" : "brightness-0"
               )}
             />

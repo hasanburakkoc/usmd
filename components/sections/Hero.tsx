@@ -40,8 +40,8 @@ function HeroWaveDivider() {
   );
 }
 
-const HERO_IMAGE_MOBILE = "/assets/hero/my-mobile-hero.png";
-const HERO_IMAGE_DESKTOP = "/assets/hero/my-web-hero.png";
+const HERO_IMAGE_MOBILE = "/assets/hero/yenid.png";
+const HERO_IMAGE_DESKTOP = "/assets/hero/yeniy.png";
 
 export function Hero() {
   return (
